@@ -1,0 +1,20 @@
+{% load comments_tags %}
+
+{% if not user.is_authenticated and not allow_anonymous %}
+{% else %}
+	<div id="comment-input-div">
+		<form method="POST" action="{% url "comment-create" %}" class="add-comment-form">
+			{% csrf_token %}
+			{{ form.errors }}
+			{% include "components/_field.html" with field=form.comment %}
+			{% if target %}	
+				<input name="model" value="{% get_model_name target %}" hidden>
+				<input name="model_id" value="{{ target.id }}" hidden>
+				<input name="app_name" value="{% get_app_name target %}" hidden>
+			{% endif %}
+			<input id="id_user" name="user" value="{% if user.is_authenticated %}{{ user.id }}{% endif %}" hidden>
+			<input type="submit" value="Add Comment" id="add-comment" class="btn btn-primary mt-4 mb-4" />
+		</form>
+	</div>
+{% endif %}
+

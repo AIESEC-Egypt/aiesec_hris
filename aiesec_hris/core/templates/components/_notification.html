@@ -1,0 +1,9 @@
+<div class="card {% if unread %}card-outline-primary{% endif %} mb-3 text-center">
+  <div class="card-block">
+    <blockquote class="card-blockquote">
+        <a class="text-black" href={{ notification.custom_link|default:notification.content_object.get_absolute_url }}>
+            <p>{{ notification.text }}</p>
+        </a>
+    </blockquote>
+  </div>
+</div>

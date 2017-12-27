@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+    <div class="row mt-4">
+        <h1 class="col-12 text-center">Create a Form</h1>
+    </div>
+
+    
+    <form class="ajax_form" method="post" enctype="multipart/form-data" scroll-to-top="true" %}">{% csrf_token %}
+    <div class="alert hidden"></div>
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            {% include "components/_form.html" with form=form_form col="col-12" %}
+        </div>
+    </div>
+
+    {{ question_formset.management_form }}
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 questions_wrapper">
+                <div class="main_question question">   
+                    <h4 class="question_title">Question 1</h4>
+                    <div class="delete_question_wrapper"></div>
+                    {% for question_form in question_formset %}
+                        {% include "components/_form.html" with form=question_form col="col-12" %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% if post_form.instance.pk %}
+                <input type="submit" value="Save" class="btn btn-primary col-4 offset-4 col-sm-2 offset-sm-9">
+            {% else %}
+                <div class='add_more_questions btn btn-primary col-4 col-sm-5 col-md-3'>Add more questions</div>
+                <input type="submit" value="Save" class="btn btn-primary col-4 offset-sm-4 offset-md-6 col-sm-2">
+            {% endif %}
+            <input type="hidden" name="num_questions" class="num_questions" value="1">
+        </div>
+    </form>
+{% endblock content %}

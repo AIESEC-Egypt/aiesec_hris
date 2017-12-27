@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+      <div class="col-12">
+          {% include "components/_messages.html" %}
+      </div>
+    </div>
+    {% if message %}
+        <div class="row">
+            <div class="col-12 text center alert {% if alert_type %}
+                alert-{{ alert_type }}
+            {% else %}
+                alert-info
+            {% endif %}">
+                {{ message }}
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

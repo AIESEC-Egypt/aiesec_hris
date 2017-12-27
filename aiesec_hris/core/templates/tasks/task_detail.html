@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load aiesechr_tags comments_tags %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        {% include "components/_messages.html" %}
+    </div>
+</div>
+
+<div class="row mt-4 mb-4">
+    <div class="col-8">
+        <h2>{{ object.title }}</h2>
+        {% if object.assigner == request.user %}
+            <span class="delete text-danger" delete-url="{% url "task-delete" object.pk %}" warning-msg="Are you sure you want to delete the task {{ object.title }}" redirect-url="{% url "task-list" %}">delete</span>
+        {% endif %}
+    </div>
+    <div class="col-4">
+        <span class="text-info">Status: {{ object.get_status_display }}</span><br>
+        <span class="text-danger">Deadline: {{ object.deadline }}</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-6 text-info">Assigned to: {{ object.assignee.get_full_name }}</div>
+    <div class="col-12 col-sm-6 text-info">Created by: {{ object.assigner.get_full_name }}</div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-12">
+        {{ object.description }}
+    </div> 
+</div>
+
+
+<div class="row mt-4">
+    <hr class="col-12"></hr>
+    <h4 class="col-12 text-center">Submission</h4>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+        {% if object.submission %}
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>{{ object.submission }}</p>
+                </div>
+            </div>
+        {% else %}
+            {% if request.user == object.assignee %}
+                <form class="row mt-2" method="post" action="{% url "task-submit" object.pk %}">{% csrf_token %}
+                    <div class="col-8">
+                        {% if object.submission_type == 2 %}
+                            <input type="number" name="submission" class="form-control" placeholder="Submission (numeric)">
+                        {% else %}
+                            <input type="text" name="submission" class="form-control" placeholder="Submission">
+                        {% endif %}
+                    </div>
+                    <input type="submit" name="" class="col-3 btn btn-success" value="Submit">
+                </form>
+            {% endif %}
+            
+        {% endif %}
+        {% if request.user == object.assigner %}
+            {% if object.submission %}
+                <div class="row">
+                    {% if object.status == 3 or object.status == 4 %}
+                        <div class="col-12 alert alert-info">
+                            This submission is {{ object.get_status_display }} <br>
+                            <small>Change status to <a href="{% url "task-status-update" task.pk "reject" %}">rejected</a> or <a href="{% url "task-status-update" task.pk "accept" %}">accepted</a></small>
+                            
+                        </div>
+                    {% else %}
+                        <div class="col-6">
+                            <a href="{% url "task-status-update" task.pk "reject" %}" class="btn btn-danger text-white">Reject</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="{% url "task-status-update" task.pk "accept" %}" class="float-right btn btn-success text-white">Accept</a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <p>{{ object.assignee.get_full_name }} did not submit this task yet</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mt-4">
+    <hr class="col-12"></hr>
+    <h4 class="col-12 text-center">Discussion</h4>
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+        {% get_comments object request.user %}
+        {% comment_form object request.user %} 
+    </div>
+</div>
+
+
+{% endblock content %}

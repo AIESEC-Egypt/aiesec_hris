@@ -1,0 +1,16 @@
+<div class=" col-12 col-sm-6 col-md-3">
+    <div class="card mb-2">
+      <div class="card-header">
+        {{ position.title }}
+      </div>
+      <div class="card-block">
+
+        <p class="card-text">
+            {% for profile in position.profile.all %}
+                <a href="{{ profile.get_absolute_url }}">{{ profile.user.get_full_name }}</a> <br>
+            {% endfor %}
+        </p>
+
+      </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{% load aiesechr_tags %}
+<div class="form-group row">
+    {% for field in form %}
+
+        {% if field|fieldtype == "HiddenInput" %}
+            {{ field }}            
+        {% else %}
+            {% if col %}
+                {% include "components/_field.html" %}
+            {% else %}
+                {% include "components/_field.html" with col="col-12 col-sm-4 col-md-2" %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>

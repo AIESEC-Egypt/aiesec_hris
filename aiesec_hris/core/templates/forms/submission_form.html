@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <h1 class="col-12 text-center mt-4">Form: {{ form.title }}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6 offset-3">
+            <form method="post" class="ajax_form">{% csrf_token %}
+                <div class="alert hidden"></div>
+                
+                {% for question in form.question_form.all %}
+                    <label class="col-form-label">{{ question.question }}{% if question.required %}<span class="required">*</span>{% endif %}</label>
+                    <input type="hidden" name="answer-{{ forloop.counter0 }}-question" value="{{ question.pk }}">
+                    {% if question.type == 2 %}
+                        <input type="text" name="answer-{{ forloop.counter0 }}-value" placeholder="Answer" class="form-control" id="id_answer-{{ forloop.counter0 }}-value" maxlength="225" {% if question.required %}required{% endif %}>
+                    {% else %}
+                        {% with forloop.counter0 as outerloop_counter %}
+                            {% for choice in question.get_choices %}
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="{% if question.multiple %}checkbox{% else %}radio{% endif %}" name="answer-{{outerloop_counter}}-value" id="answer-{{ forloop.counter0 }}-value" value="{{ choice }}" {% if not question.multiple and question.required %}required{% endif %}>
+                                    {{ choice }}
+                                  </label>
+                                </div>
+                            {% endfor %}
+                        {% endwith %}
+                    {% endif %}
+                {% endfor %}
+                <input type="submit" value="Submit" class="btn btn-primary float-right mt-4">
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-12 text-center mt-4 mb-4">
+              {% if profile %}
+                  <h1>Your Profile was Declined cause:</h1><br>
+                  {% if profile.verification_issue == 2 %}
+                  <h2>NATIONAL ID MISMATCH</h2>
+                  {% else %}
+                  <h2>{{ profile.verification_issue_extra }}</h2>
+                  {% endif %}
+              {% else %}
+                <h1>Register</h1>
+               {% endif %}
+            </div>
+          </div>
+          <form method="post" class="ajax_form" enctype="multipart/form-data" id="register_form" scroll-to-top="true" >{% csrf_token %}
+            <div class="alert hidden"></div>
+            <div class="row">
+              <div class="col-12 col-sm-6 offset-sm-3">
+                  {% for field in form %}
+                    {% if field.name == 'position' %}
+                        <div class="col-12">
+                          <label class="col-form-label">
+                            Position
+                          </label>
+                          <select name="position" placeholder="Position" id="id_position" class="form-control" disabled="True">
+                            <option value="" selected="">---------</option>
+                          </select>
+                      </div>
+                    {% else %}
+                      {% include "components/_field.html" with col="col-12" %}
+                    {% endif %}
+                  {% endfor %}
+
+              </div>
+            </div>
+              {% if profile %}
+                  <input type="submit" value="Update" class="btn btn-primary float-right">
+                {% else %}
+              <input type="submit" value="Register" class="btn btn-primary float-right">
+                {% endif %}
+          </form>
+        </div>
+    </div>
+
+{% endblock content %}

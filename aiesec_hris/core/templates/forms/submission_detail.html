@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <h1 class="col-12 text-center mt-4">Submission: {{ object.user.get_full_name|default:object.visitor_email }}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6 offset-3">
+            {% include "components/_fields_display.html" %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6 offset-3">
+            <h4 class='mt-4 mb-2'>Answers</h4>
+            {% for answer in object.answers.all %}
+                {% include "components/_fields_display.html" with object=answer fields=answer_fields %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

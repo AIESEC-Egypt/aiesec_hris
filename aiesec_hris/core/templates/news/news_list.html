@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for new in news %}
+    <li>{{ new.slug }}</li>
+{% endfor %}
+<div class="row">
+	<form method='POST'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" class="btn btn-primary" value="Save">
+	</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,5 @@
+[run]
+include = aiesec_hris/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin

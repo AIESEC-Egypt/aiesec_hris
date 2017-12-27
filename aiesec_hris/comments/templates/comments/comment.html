@@ -1,0 +1,18 @@
+<div class="card mb-4">
+	<div class="card-block">
+		{% if object.user %}
+			{% if object.user.id == user.id %}
+				<form class="comment-delete-form" method='DELETE' action="{% url "comment-delete" object.pk %}">
+					<input value="{% csrf_token %}" id="csrf" hidden>
+					{% csrf_token %}
+					<button type="submit" value="Delete" class="comment-delete-btn close float-right" aria-label="Close" data-id="{{ object.id }}">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				</form>
+			{% endif %}
+		{% endif %}
+		<h6 class="card-subtitle mb-2 text-muted">{{ object.user.username }}</h6>
+		<p class="card-text" id='comment-{{ object.id }}'> {{ object.comment }} </p>	
+		<small>{{ object.created_at }}</small>
+	</div>
+</div>

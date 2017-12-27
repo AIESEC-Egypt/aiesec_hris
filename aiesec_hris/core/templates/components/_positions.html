@@ -1,0 +1,6 @@
+{% for child_position in position.children.all %}
+    
+    {% include "components/_position.html" with position=child_position %}    
+    {% include "components/_positions.html" with position=child_position %}
+    <hr class="col-12"></hr>
+{% endfor %}

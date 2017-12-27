@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="row">
+      <div class="col-12">
+          {% include "components/_messages.html" %}
+      </div>
+  </div>
+
+  <div class="row">
+      <h1 class="col-12 text-center mt-4">My Forms</h1>
+  </div>
+  <div class="row mb-4">
+      <div class="col-12">
+          <a href="{% url "form-create" %}" class="btn btn-primary float-right">Create Form</a>
+      </div>
+    </div>
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>title</th>
+        <th>created at</th>
+        <th>submissions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      	{% for form in forms %}
+          <tr>
+            <td><a href="{{ form.get_absolute_url }}">{{ form.title }}</a></td>
+            <td>{{ form.created_at }}</td>
+            <td> {% if form.submissions.count != 0 %}
+                   {{ form.submissions.count }}
+                {% else %}
+                 0
+                {% endif %}
+            </td>
+          </tr>
+	      {% endfor %}
+    </tbody>
+  </table>
+
+
+
+{% endblock %}

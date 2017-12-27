@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load aiesechr_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+    <div class="row mt-4">
+        <h1 class="col-12 text-center">Notifications</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            {% for notification in unread %}
+                {% include "components/_notification.html" with unread=True %}
+            {% endfor %}
+
+            {% for notification in read %}
+                {% include "components/_notification.html" with unread=False %}
+            {% endfor %}
+
+            {% if not object_list %}
+                <div class="text-center">There are no notifications at the moment</div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

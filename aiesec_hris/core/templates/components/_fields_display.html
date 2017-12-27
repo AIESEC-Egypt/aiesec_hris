@@ -1,0 +1,24 @@
+{% load aiesechr_tags %}
+<ul class="mt-2 list-group">
+    {% for field in fields %}
+
+        <li class="list-group-item col-12">
+
+            {% if hide_field_name %}
+
+                <div class="col-12">{{ object|get_attr:field }}</div>
+            {% else %}
+                <div class="{{ field_col|default:"col-4" }}">{{ object|get_verbose:field|capfirst|safe }}</div>
+                {% if field == 'id_picture' %}
+                    <img src="{{ object|get_attr:field }}"
+                    class="img-fluid" alt="{{ object|get_attr:field }}">
+                {% else %}
+                <div class="{{ value_col|default:"col-8" }}">{{ object|get_attr:field }}</div>
+                {% endif %}
+            {% endif %}
+            {% if help_text %}
+                <small class="col-12">{{ object|get_help_text:field }}</small>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

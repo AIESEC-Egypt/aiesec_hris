@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+
+
+    <div class="row mt-4 mb-4">
+        <h1 class="col-12 text-center">Form: {{ object.title }}</h1>
+        <small class="col-12 text-center">
+            <div class="input-group copy-submission-link-wrapper">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Submission Link:</button>
+                </span>
+                <input id="submission-link" type="text" name="" value="{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ object.get_submission_url }}" disabled>
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary copy-to-clipboard" type="button" data-target="#submission-link" alert="#copy-alert">Copy</button>
+                </span>
+            </div>
+            <div class="alert alert-success invisible" id="copy-alert"></div>
+        </small>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6">
+            <h4 class="text-center">Form details</h4>
+            {% include "components/_fields_display.html" %}
+
+            {% for question in object.question_form.all %}
+                <h4 class="mt-4 mb-2">Question {{ forloop.counter }}</h4>
+                {% include "components/_fields_display.html" with object=question fields=question_fields %}
+            {% endfor %}
+        </div>
+        <div class="col-12 col-sm-6">
+            <h4 class="text-center">Submissions ({{ object.submissions.count }})</h4>
+            {% for submission in object.submissions.all %}
+                <ul class="mt-2 list-group">
+                    <li class="list-group-item col-12">
+                        <div class="col-8">
+                            {{ submission.user.email|default:submission.visitor_email }}
+                        </div>
+                        <div class="col-4"><a href="{{ submission.get_absolute_url }}">view</a></div>
+                        <small class="col-12">{{ submission.created_at }}</small>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6 offset-sm-3 btn btn-danger delete mt-4" delete-url="{% url "form-delete" object.pk %}" warning-msg="Are you sure you want to delete this form and all of its {{ object.submissions.count }} submissions?" redirect-url="{% url "form-list" %}">Delete</div>
+    </div>
+{% endblock content %}

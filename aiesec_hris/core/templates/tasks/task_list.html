@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+      <div class="col-12">
+          {% include "components/_messages.html" %}
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center mt-4 mb-4">
+          <h1>
+            Tasks
+          <button class="btn btn-primary float-right text-white" data-toggle="modal" data-target="#addTaskModal">+ Add Task</button>
+          </h1>
+        </div>
+
+        <!-- Nav tabs -->
+
+        <div class="col-12">
+            <ul class="nav nav-tabs row" role="tablist">
+              <li class="nav-item col-6 col-md-3 text-center">
+                <a class="nav-link active" data-toggle="tab" href="#new" role="tab">Unsubmitted/New</a>
+              </li>
+              <li class="nav-item col-6 col-md-3 text-center">
+                <a class="nav-link" data-toggle="tab" href="#submitted" role="tab">Submitted</a>
+              </li>
+              <li class="nav-item col-6 col-md-3 text-center">
+                <a class="nav-link" data-toggle="tab" href="#accepted" role="tab">Accepted</a>
+              </li>
+              <li class="nav-item col-6 col-md-3 text-center">
+                <a class="nav-link" data-toggle="tab" href="#created_by_me" role="tab">Created by me</a>
+              </li>
+            </ul>
+        </div>
+
+
+        <!-- Tab panes -->
+        <div class="tab-content col-12">
+            <div class="tab-pane active" id="new" role="tabpanel">
+                {% include "components/_tasks.html" with tasks=new_tasks %}
+            </div>
+            <div class="tab-pane" id="submitted" role="tabpanel">
+                {% include "components/_tasks.html" with tasks=submitted_tasks %}
+            </div>
+            <div class="tab-pane" id="accepted" role="tabpanel">
+                {% include "components/_tasks.html" with tasks=accepted_tasks %}
+            </div>
+            <div class="tab-pane" id="created_by_me" role="tabpanel">
+                {% include "components/_tasks.html" with tasks=created_by_me_tasks %}
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- MODAL ADD TASK -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1" role="dialog" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addTaskModalLabel">Add Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <form method="post" class="ajax_form" refresh-on-complete="true" action="{% url "task-create" %}">{% csrf_token %}
+          <div class="modal-body">
+            <div class="row">
+                
+            {% for field in form %}
+                {% if field.label == 'Deadline' %}
+                    <div class="col-6">
+                        Deadline
+                        <input type="text" name="deadline" class="form-control readonly-visible datepicker" placeholder="Date" required readonly value="{% now "m/d/Y" %}">
+                    </div>
+                {% else %}
+                    {% include "components/_field.html" with col="col-6" %}
+                {% endif %}
+            {% endfor %}
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Save">
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+    <!-- END OF MODAL ADD TASK -->
+
+{% endblock content %}

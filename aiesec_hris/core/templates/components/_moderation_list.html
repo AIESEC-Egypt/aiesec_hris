@@ -1,0 +1,41 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        {% if decline_status_tab %}
+        <th>issue</th>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for review in reviews %}
+        <tr>
+            <td>{{ review.user.first_name }} {{ review.user.last_name }}</td>
+            <td>{{ review.user.email }}</td>
+            <td>{{ review.phone }}</td>
+            {% if review.verification_issue == 2 or review.verification_issue == 3 %}
+                <td>
+                    {% if review.verification_issue == 2 %}
+                        NATIONAL ID MISMATCH
+                    {% endif %}
+                    {% if review.verification_issue == 3 %}
+                        {{ review.verification_issue_extra }}
+                    {% endif %}
+                </td>
+            {% endif %}
+            <!--  trigger  -->
+            <td>
+                <button type="button" class="btn btn-primary btn-sm"
+                        data-toggle="modal" data-target="#modal{{ review.id }}">
+                    Detail
+                </button>
+                <div class="tab-pane active" role="tabpanel">
+                    {% include "components/_moderation_modal.html" with review=review %}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

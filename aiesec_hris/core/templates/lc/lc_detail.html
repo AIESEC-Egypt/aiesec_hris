@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <h1 class="col-12 text-center mt-4">{{ object.title }}</h1>
+    </div>
+
+    <div class="row mt-4">
+        {% for positions in lc_tree %}
+            {% for position in positions %}
+                {% include "components/_position.html" %}
+            {% endfor %}
+            <hr class="col-12"></hr>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

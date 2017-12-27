@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <h1 class="col-12 text-center mt-4">LCs</h1>
+        <small class="col-12 text-center">This is not a list of all LCs within AIESEC, but just the ones to which you are granted access based on your position within the organization.</small>
+    </div>
+
+    <div class="row mt-4">
+        {% for object in object_list %}
+            <div class="col-12 col-sm-6 col-md-3 text-center">
+                <a href="{{ object.get_absolute_url }}">
+                    {% include "components/_fields_display.html" with hide_field_name=True %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

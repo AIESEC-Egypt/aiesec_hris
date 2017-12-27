@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+    <div class="row mt-4">
+        <h1 class="col-12 text-center">Create a Newsfeed Post</h1>
+    </div>
+
+    
+    <form class="ajax_form" method="post" enctype="multipart/form-data" scroll-to-top="true" redirect-url="{% url "post-list" %}">{% csrf_token %}
+    <div class="alert hidden"></div>
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            {% include "components/_form.html" with form=post_form col="col-12" %}
+        </div>
+    </div>
+
+    {{ paragraph_formset.management_form }}
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3 paragraphs_wrapper">
+                <div class="main_paragraph">   
+                    <h4 class="paragraph_title">Paragraph 1</h4>
+                    <div class="delete_paragraph_wrapper"></div>
+                    {% for paragraph_form in paragraph_formset %}
+                        {% include "components/_form.html" with form=paragraph_form col="col-12" %}
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% if post_form.instance.pk %}
+                <input type="submit" value="Save" class="btn btn-primary col-4 offset-4 col-sm-2 offset-sm-9">
+            {% else %}
+                <div class='add_more_paragraphs btn btn-primary col-4 col-sm-5 col-md-3'>Add more paragraphs</div>
+                <input type="submit" value="Save" class="btn btn-primary col-4 offset-sm-4 offset-md-6 col-sm-2">
+            {% endif %}
+            <input type="hidden" name="num_paragraphs" class="num_paragraphs" value="1">
+        </div>
+    </form>
+{% endblock content %}

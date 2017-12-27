@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <h1 class="col-12 text-center mt-4">Event: {{ object.title }}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6 offset-3">
+            {% include "components/_fields_display.html" %}
+        </div>
+    </div>
+{% endblock content %}

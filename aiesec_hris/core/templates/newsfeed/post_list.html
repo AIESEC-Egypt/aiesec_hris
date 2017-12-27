@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load aiesechr_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+    <div class="row mt-4">
+        <h1 class="col-12 text-center">Newsfeed</h1>
+    </div>
+    <div class="row">
+      <div class="col-12">
+          <a href="{% url "post-create" %}" class="btn btn-sm btn-primary float-right mb-4">+ Add Post</a>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+        <form method="get" class="col-6 offset-3">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search titles..." name="post" value="{{ request.GET.post }}">
+              <span class="input-group-btn">
+                <input type="submit" class="btn btn-secondary" value="Search">
+              </span>
+            </div>
+        </form>        
+    </div>
+
+    <div class="row">
+        <div class="hidden-xs-down col-sm-5 col-md-4">
+            <div class="card categories">
+              <div class="card-header">
+                Categories
+              </div>
+              <div class="card-block">
+                {% for category in category_list %}
+                    <a class="text-black" href="{{ request.url }}?category={{ category.id }}"><h4 class="card-title {% if request.GET.category|parse_int == category.id %}
+                        active
+                    {% endif %}">{{ category.title }}</h4></a>
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-7 col-md-8">
+            {% for post in object_list %}
+                {% include "components/_post.html" %}
+            {% endfor %}
+        </div>
+        <div class="col-6 offset-3 col-sm-4 offset-sm-4 text-center">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                  <a class="page-link" href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+
+               
+                {% for page in page_obj.paginator.page_range %}
+                    <li class="page-item {% if page == page_obj.number %}
+                        active
+                    {% endif %}"><a class="page-link" href="?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+                    
+                
+
+                <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                  <a class="page-link" href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+        </div>
+    </div>
+{% endblock content %}

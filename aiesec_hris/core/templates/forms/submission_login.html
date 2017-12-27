@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <h1 class="col-12 text-center mt-4">Form: {{ object.title }}</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6 offset-3">
+            Do you have an account on this system? If yes, please login first <a href="{% url "login" %}?next={{ request.url }}">here</a> otherwise, you can submit the form as a visitor by entering your email below
+            <form method="post" class="ajax_form">{% csrf_token %}
+                <div class="alert hidden"></div>
+                {% include "components/_form.html" with col="col-12" form=submit_form_form %}
+                <input type="submit" name="" class="btn btn-primary float-right">
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

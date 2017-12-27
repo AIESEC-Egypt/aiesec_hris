@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load aiesechr_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            {% include "components/_messages.html" %}
+        </div>
+    </div>
+
+
+    <div class="row mt-4">
+        <h1 class="col-12 text-center">{{ object.user.get_full_name }}</h1>
+        {% if object.user == request.user or request.user.profile.position|is_parent_of:object.user.profile.position %}
+            <div class="col-12 text-center">
+                <a href="{% url "profile-update" object.pk %}"><small>Edit profile</small></a>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 col-sm-6 offset-sm-3">
+            <div class="row">
+                <div class="col-6">
+                    <img src="{{ object.photo.url }}" class="mw-100">
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            {{ object.user.get_full_name }}                            
+                        </div>
+                        <div class="col-12">
+                            {{ object.position.title }}                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include "components/_fields_display.html" %}
+
+            <h3 class="mt-4 mb-2">
+                Experience Points {{ object.user.experience_points.score }}
+                <br>
+                Children Experience Points {{ object.user.experience_points.children_score }}
+
+            </h3>
+            {% if request.user.profile.pk == object.pk %}
+                <a href="{% url "experience-points-update" object.user.experience_points.pk %}"><small>Update</small></a>
+            {% endif %}
+            {% include "components/_fields_display.html" with fields=experience_points_fields object=object.user.experience_points help_text=True %}
+
+        </div>
+    </div>
+
+{% endblock content %}
