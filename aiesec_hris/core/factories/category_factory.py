@@ -1,7 +1,6 @@
-import factory
 import factory.fuzzy
 
-from ..models import Category
+from aiesec_hris.education.models import Category
 
 
 class CategoryFactory(factory.DjangoModelFactory):
