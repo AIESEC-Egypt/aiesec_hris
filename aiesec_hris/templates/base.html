@@ -56,6 +56,40 @@
         </li>
         {% if request.user.is_authenticated %}
           <li class="nav-item">
+            <a class="nav-link" href="{% url "post-list" %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "task-list" %}">Tasks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "event-list" %}">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "form-list" %}">Forms</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "lc-list" %}">HR</a>
+          </li>
+          {% if request.user.profile.position.type == 1 %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "stats" %}">Statistics</a>
+            </li>
+          {% endif %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="nav-link" href="{{ request.user.profile.get_absolute_url }}">View profile</a>
+              <a class="nav-link" href="{% url "change-password" %}">Change Password</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url "notification-list" %}">Notifications
+              <span class="badge badge-danger hidden notification_count"></span></a>
+          </li>
+          <li class="nav-item">
             {# URL provided by django-allauth/account/urls.py #}
             <a class="nav-link" href="{% url 'users:detail' request.user.username %}">{% trans "My Profile" %}</a>
           </li>
@@ -72,6 +106,12 @@
             {# URL provided by django-allauth/account/urls.py #}
             <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
           </li>
+
+          {% if request.user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url "moderation-list" %}">Moderation</a>
+            </li>
+          {% endif %}
         {% endif %}
       </ul>
     </div>
