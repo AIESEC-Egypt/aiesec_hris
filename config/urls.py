@@ -21,6 +21,7 @@ urlpatterns = [
 
                   url(r'^comments/', include('aiesec_hris.comments.urls')),
                   url(r'^education/', include('aiesec_hris.education.urls')),
+                  url(r'^recruitment/', include('aiesec_hris.recruitment.urls')),
 
                   url(r'^$', views.IndexView.as_view(), name='index'),
 

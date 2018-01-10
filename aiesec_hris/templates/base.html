@@ -1,137 +1,212 @@
 {% load static i18n %}<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{% block title %}AIESEC_HRIS{% endblock title %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Umega App - Blue Dashboard</title>
 
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
 
-  {% block css %}
-    <!-- Latest compiled and minified Bootstrap 4 beta CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static "/css/bootstrap-reboot.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "/css/bootstrap-datepicker3.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "/css/sweetalert2.min.css" %}">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static "/css/style.css" %}">
-    {% block extra_css %}{% endblock extra_css %}
+    {% block css %}
+        <!-- PACE-->
+        <link rel="stylesheet" type="text/css" href="{% static 'plugins/PACE/themes/blue/pace-theme-flash.css' %}">
+        <script type="text/javascript" src="{% static 'plugins/PACE/pace.min.js' %}"></script>
+        <!-- Bootstrap CSS-->
+        <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}">
+        <!-- Fonts-->
+        <link rel="stylesheet" type="text/css" href="{% static 'plugins/themify-icons/themify-icons.css' %}">
+        <!-- Malihu Scrollbar-->
+        <link rel=" stylesheet
+    " type="text/css"
+              href="{% static 'plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' %}">
+        <!-- Animo.js-->
+        <link rel=" stylesheet
+    " type="text/css" href="{% static 'plugins/animo.js/animate-animo.min.css' %}">
+        <!-- Flag Icons-->
+        <link rel=" stylesheet
+    " type="text/css" href="{% static 'plugins/flag-icon-css/css/flag-icon.min.css' %}">
+        <!-- Bootstrap Progressbar-->
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'plugins/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}">
+        <!-- Toastr-->
+        <link rel="stylesheet" type="text/css" href="{% static 'plugins/toastr/toastr.min.css' %}">
+        <!-- SpinKit-->
+        <link rel="stylesheet" type="text/css" href="{% static 'plugins/SpinKit/css/spinners/7-three-bounce.css' %}">
+        <!-- Jvector Map-->
+        <link rel=" stylesheet
+    " type="text/css" href="{% static 'plugins/jvectormap/jquery-jvectormap-2.0.3.css' %}">
+        <!-- Morris Chart-->
+        <link rel="stylesheet" type="text/css" href="{% static 'plugins/morris.js/morris.css' %}">
+        <!-- DataTables-->
+        <link rel=" stylesheet
+    " type="text/css" href="{% static 'plugins/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'plugins/datatables.net-buttons-bs/css/buttons.bootstrap.min.css' %}">
+        <link rel=" stylesheet
+    " type="text/css"
+              href="{% static 'plugins/datatables.net-colreorder-bs/css/colReorder.bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'plugins/datatables.net-responsive-bs/css/responsive.bootstrap.min.css' %}">
+        <!-- Weather Icons-->
+        <link rel=" stylesheet
+    " type="text/css" href="{% static 'plugins/weather-icons/css/weather-icons-wind.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'plugins/weather-icons/css/weather-icons.min.css' %}">
+        <!-- FullCalendar-->
+        <link rel=" stylesheet
+    " type="text/css" href="{% static 'plugins/fullcalendar/dist/fullcalendar.min.css' %}">
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'plugins/fullcalendar/dist/fullcalendar.print.css' %}" media="print">
+        <!-- jQuery MiniColors-->
+        <link rel=" stylesheet" type="text/css" href="{% static 'plugins/jquery-minicolors/jquery.minicolors.css' %}">
+        <!-- Bootstrap Date Range Picker-->
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.css' %}">
+        <!-- Primary Style-->
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel=" stylesheet" type="text/css" href="{% static 'css/third-layout.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '/css/skins/blue-skin.css' %}">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
+        <!--[if lt IE 9]>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        <!-- Your stuff: Third-party CSS libraries go here -->
+
+        <!-- This file stores project-specific CSS -->
 
 
-    <!-- Your stuff: Third-party CSS libraries go here -->
-
-    <!-- This file stores project-specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-
-  {% endblock %}
+    {% endblock %}
 
 </head>
 
-<body>
-
-<div class="m-b-1">
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="{% url 'home' %}">AIESEC_HRIS</a>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">About</a>
-        </li>
-        {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url "post-list" %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url "task-list" %}">Tasks</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url "event-list" %}">Events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url "form-list" %}">Forms</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url "lc-list" %}">HR</a>
-          </li>
-          {% if request.user.profile.position.type == 1 %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url "stats" %}">Statistics</a>
+<body {% block body_class %}{% endblock %}>
+<!-- Header start-->
+{% block header_block %}
+    <header>
+        <a href="{% url 'home' %}" class="brand pull-left">
+            <img src="{% static 'images/logo-light.png' %}" width="70" class="logo">
+            <img src="{% static 'images/logo-light.png' %}" width="40" class="logo-sm">
+        </a>
+        <a href="javascript:" role="button" class="hamburger-menu pull-left"><span></span></a>
+        <ul class="notification-bar list-inline pull-right">
+            <li class="visible-xs"><a href="javascript:" role="button" class="header-icon search-bar-toggle"><i
+                    class="ti-search"></i></a></li>
+            <li class="dropdown"><a id="dropdownMenu1" href="#" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true"
+                                    aria-expanded="false" class="dropdown-toggle bubble header-icon"><i
+                    class="ti-world"></i><span class="badge bg-danger">1</span></a>
+                <div aria-labelledby="dropdownMenu1"
+                     class="dropdown-menu dropdown-menu-right dm-medium fs-12 animated fadeInDown">
+                    <h5 class="dropdown-header">You have 1 notifications</h5>
+                    <ul data-mcs-theme="minimal-dark" class="media-list mCustomScrollbar">
+                        <li class="media"><a href="javascript:">
+                            <div class="media-left avatar"><img src="{% static 'images/users/17.jpg' %}" alt=""
+                                                                class="media-object img-circle"><span
+                                    class="status bg-warning"></span></div>
+                            <div class="media-body">
+                                <h6 class="media-heading">William Carlson</h6>
+                                <p class="text-muted mb-0">Commented on your post</p>
+                            </div>
+                            <div class="media-right text-nowrap">
+                                <time datetime="2015-12-10T20:27:48+07:00" class="fs-11">5 mins</time>
+                            </div>
+                        </a></li>
+                    </ul>
+                    <div class="dropdown-footer text-center p-10"><a href="javascript:;" class="fw-500 text-muted">See
+                        all
+                        notifications</a></div>
+                </div>
             </li>
-          {% endif %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-              Account
+            <li class="dropdown hidden-xs"><a id="dropdownMenu2" href="#" data-toggle="dropdown" role="button"
+                                              aria-haspopup="true" aria-expanded="false"
+                                              class="dropdown-toggle header-icon lh-1 pt-15 pb-15">
+                <div class="media mt-0">
+                    <div class="media-left avatar"><img src="{% static 'images/users/04.jpg' %}" alt=""
+                                                        class=" media-object img-circle"><span
+                            class="status bg-success"></span></div>
+                    <div class="media-right media-middle pl-0">
+                        <p class="fs-12 text-base mb-0">Hi, Matthew</p>
+                    </div>
+                </div>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="nav-link" href="{{ request.user.profile.get_absolute_url }}">View profile</a>
-              <a class="nav-link" href="{% url "change-password" %}">Change Password</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url "notification-list" %}">Notifications
-              <span class="badge badge-danger hidden notification_count"></span></a>
-          </li>
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a class="nav-link" href="{% url 'users:detail' request.user.username %}">{% trans "My Profile" %}</a>
-          </li>
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-          </li>
-          <li class="nav-item">
-            {# URL provided by django-allauth/account/urls.py #}
-            <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-          </li>
+                <ul aria-labelledby="dropdownMenu2" class="dropdown-menu fs-12 animated fadeInDown">
+                    {% if request.user.is_authenticated %}
+                        <li><a href="{% url 'users:detail' request.user.username %}"><i class="ti-user mr-5"></i> My
+                            Profile</a>
+                        </li>
+                        <li><a href="{% url 'users:update' %}"><i class="ti-settings mr-5"></i> Account Settings</a>
+                        </li>
+                        <li><a href="{% url 'account_logout' %}"><i class="ti-power-off mr-5"></i> Logout</a></li>
 
-          {% if request.user.is_staff %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url "moderation-list" %}">Moderation</a>
+
+                    {% else %}
+                        <li class="nav-item">
+                            {# URL provided by django-allauth/account/urls.py #}
+                            <a id="sign-up-link" class="nav-link"
+                               href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            {# URL provided by django-allauth/account/urls.py #}
+                            <a id="log-in-link" class="nav-link"
+                               href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
             </li>
-          {% endif %}
-        {% endif %}
-      </ul>
+        </ul>
+    </header>
+    <!-- Header end-->
+{% endblock %}
+
+
+{% block content %}
+    <div class="main-container">
+        {% block main_sidebar %}
+            <!-- Main Sidebar start-->
+            <aside class="main-sidebar">
+                <div class="user">
+                    <h4 class="fs-16 text-white mt-15 mb-5 fw-700">Ali Soliman</h4>
+                    <p class="mb-0 fw-300 text-white">MCVP DXP</p>
+                </div>
+                <ul class="list-unstyled navigation mb-0 text-white">
+                    <li class="sidebar-category">Main</li>
+                    <li class="panel"><a href="{% url 'home' %}"><i
+                            class="ti-home"></i><span
+                            class="sidebar-title">Dashboard</span></a></li>
+                    <li class="panel"><a href="{% url 'home' %}"><i
+                            class="ti-world text-white"></i><span
+                            class="sidebar-title">Opportunities </span></a></li>
+                    <li class="panel"><a href="{% url 'home' %}"><i
+                            class="ti-layers-alt"></i><span
+                            class="sidebar-title">Applications </span></a></li>
+                    <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation"
+                                         href="#collapse4"
+                                         aria-expanded="false" aria-controls="collapse4" class="collapsed"><i
+                            class="ti-paint-bucket"></i><span class="sidebar-title">Color system</span></a>
+                        <ul id="collapse4" class="list-unstyled collapse">
+                            <li><a href="green-system.html">Green</a></li>
+                            <li><a href="blue-system.html">Blue</a></li>
+                            <li><a href="purple-system.html">Purple</a></li>
+                            <li><a href="red-system.html">Red</a></li>
+                            <li><a href="yellow-system.html">Yellow</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </aside>
+            <!-- Main Sidebar end-->
+        {% endblock %}
+        {% block page_container %}
+        {% endblock %}
     </div>
-  </nav>
-
-</div>
-
-<div class="container">
-
-  {% if messages %}
-    {% for message in messages %}
-      <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-
-  {% block content %}
-    <p>Use this document as a way to quick start any new project.</p>
-  {% endblock content %}
-
-</div> <!-- /container -->
+{% endblock %}
 
 {% block modal %}{% endblock modal %}
 
@@ -139,30 +214,75 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 {% block javascript %}
-  <!-- Required by Bootstrap v4 beta -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-          crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-          integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-          crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-          integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-          crossorigin="anonymous"></script>
-
-
-  <script type="text/javascript" src="{% static "/js/sweetalert2.min.js" %}"></script>
-  <script type="text/javascript" src="{% static "/js/tether.min.js" %}"></script>
-  <script type="text/javascript" src="{% static "/js/bootstrap-datepicker.min.js" %}"></script>
-
-  <script type="text/javascript" src="{% static "/js/functions.js" %}"></script>
-  {% block extra_js %}{% endblock extra_js %}
-  <!-- place project specific Javascript in this file -->
-
-  <script src="{% static 'js/project.js' %}"></script>
-
-
+    <!-- jQuery-->
+    <script type="text/javascript" src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap JavaScript-->
+    <script type="text/javascript" src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- Malihu Scrollbar-->
+    <script type="text/javascript"
+            src="{% static 'plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <!-- Animo.js-->
+    <script type="text/javascript" src="{% static 'plugins/animo.js/animo.min.js' %}"></script>
+    <!-- Bootstrap Progressbar-->
+    <script type="text/javascript"
+            src="{% static 'plugins/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
+    <!-- jQuery Easy Pie Chart-->
+    <script type="text/javascript"
+            src="{% static 'plugins/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js' %}"></script>
+    <!-- Toastr-->
+    <script type="text/javascript" src="{% static 'plugins/toastr/toastr.min.js' %}"></script>
+    <!-- MomentJS-->
+    <script type="text/javascript" src="{% static 'plugins/moment/min/moment.min.js' %}"></script>
+    <!-- jQuery BlockUI-->
+    <script type="text/javascript" src="{% static 'plugins/blockUI/jquery.blockUI.js' %}"></script>
+    <!-- jQuery Counter Up-->
+    <script type="text/javascript" src="{% static 'plugins/jquery-waypoints/waypoints.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/Counter-Up/jquery.counterup.min.js' %}"></script>
+    <!-- Jvector Map-->
+    <script type="text/javascript" src="{% static 'plugins/jvectormap/jquery-jvectormap-2.0.3.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'plugins/jvectormap/maps/jquery-jvectormap-world-mill.js' %}"></script>
+    <!-- Flot Charts-->
+    <script type="text/javascript" src="{% static 'plugins/flot/jquery.flot.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/flot/jquery.flot.resize.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/flot.curvedlines/curvedLines.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
+    <!-- Morris Chart-->
+    <script type="text/javascript" src="{% static 'plugins/raphael/raphael-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/morris.js/morris.min.js' %}"></script>
+    <!-- DataTables-->
+    <script type="text/javascript" src="{% static 'plugins/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'plugins/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'plugins/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'plugins/datatables.net-buttons-bs/js/buttons.bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/jszip/dist/jszip.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/pdfmake/build/pdfmake.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/pdfmake/build/vfs_fonts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'plugins/datatables.net-colreorder/js/dataTables.colReorder.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'plugins/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'plugins/datatables.net-responsive-bs/js/responsive.bootstrap.js' %}"></script>
+    <!-- jQuery UI-->
+    <script type="text/javascript" src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+    <!-- FullCalendar-->
+    <script type="text/javascript" src="{% static 'plugins/fullcalendar/dist/fullcalendar.min.js' %}"></script>
+    <!-- jQuery MiniColors-->
+    <script type="text/javascript" src="{% static 'plugins/jquery-minicolors/jquery.minicolors.min.js' %}"></script>
+    <!-- Bootstrap Date Range Picker-->
+    <script type="text/javascript" src="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+    <!-- Custom JS-->
+    <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+    {#<script type="text/javascript" src="{% static 'build/js/page-content/skins/blue-dashboard.js' %}"></script>#}
 {% endblock javascript %}
+{% block extra_javascript %}
+{% endblock %}
 </body>
 </html>
 

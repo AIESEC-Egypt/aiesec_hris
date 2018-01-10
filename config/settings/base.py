@@ -65,7 +65,9 @@ LOCAL_APPS = [
     'aiesec_hris.tasks.apps.TasksConfig',
     'aiesec_hris.events.apps.EventsConfig',
     'aiesec_hris.form_builder.apps.FormBuilderConfig',
-    'aiesec_hris.education.apps.EducationConfig'
+    'aiesec_hris.education.apps.EducationConfig',
+    'aiesec_hris.recruitment.apps.RecruitmentConfig'
+
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
