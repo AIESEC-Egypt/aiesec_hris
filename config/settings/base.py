@@ -42,6 +42,7 @@ DJANGO_APPS = [
     # 'django.contrib.humanize',
 
     # Admin
+    'grappelli',
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
@@ -281,3 +282,5 @@ ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
 # ------------------------------------------------------------------------------
+
+GRAPPELLI_ADMIN_TITLE = 'HRIS'
