@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Umega App - Blue Dashboard</title>
+
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+
+  <!-- PACE-->
+  <link rel="stylesheet" type="text/css" href="/static/plugins/PACE/themes/blue/pace-theme-flash.css">
+  <script type="text/javascript" src="/static/plugins/PACE/pace.min.js"></script>
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" type="text/css" href="/static/plugins/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Fonts-->
+  <link rel="stylesheet" type="text/css" href="/static/plugins/themify-icons/themify-icons.css">
+  <!-- Malihu Scrollbar-->
+  <link rel=" stylesheet
+    " type="text/css"
+        href="/static/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css">
+  <!-- Animo.js-->
+  <link rel=" stylesheet
+    " type="text/css" href="/static/plugins/animo.js/animate-animo.min.css">
+  <!-- Flag Icons-->
+  <link rel=" stylesheet
+    " type="text/css" href="/static/plugins/flag-icon-css/css/flag-icon.min.css">
+  <!-- Bootstrap Progressbar-->
+  <link rel="stylesheet" type="text/css"
+        href="/static/plugins/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css">
+  <!-- Toastr-->
+  <link rel="stylesheet" type="text/css" href="/static/plugins/toastr/toastr.min.css">
+  <!-- SpinKit-->
+  <link rel="stylesheet" type="text/css" href="/static/plugins/SpinKit/css/spinners/7-three-bounce.css">
+  <!-- Jvector Map-->
+  <link rel=" stylesheet
+    " type="text/css" href="/static/plugins/jvectormap/jquery-jvectormap-2.0.3.css">
+  <!-- Morris Chart-->
+  <link rel="stylesheet" type="text/css" href="/static/plugins/morris.js/morris.css">
+  <!-- DataTables-->
+  <link rel=" stylesheet
+    " type="text/css" href="/static/plugins/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css"
+        href="/static/plugins/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+  <link rel=" stylesheet
+    " type="text/css"
+        href="/static/plugins/datatables.net-colreorder-bs/css/colReorder.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css"
+        href="/static/plugins/datatables.net-responsive-bs/css/responsive.bootstrap.min.css">
+  <!-- Weather Icons-->
+  <link rel=" stylesheet
+    " type="text/css" href="/static/plugins/weather-icons/css/weather-icons-wind.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/plugins/weather-icons/css/weather-icons.min.css">
+  <!-- FullCalendar-->
+  <link rel=" stylesheet
+    " type="text/css" href="/static/plugins/fullcalendar/dist/fullcalendar.min.css">
+  <link rel="stylesheet" type="text/css"
+        href="/static/plugins/fullcalendar/dist/fullcalendar.print.css" media="print">
+  <!-- jQuery MiniColors-->
+  <link rel=" stylesheet" type="text/css" href="/static/plugins/jquery-minicolors/jquery.minicolors.css">
+  <!-- Bootstrap Date Range Picker-->
+  <link rel="stylesheet" type="text/css"
+        href="/static/plugins/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- Primary Style-->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel=" stylesheet" type="text/css" href="/static/css/third-layout.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/skins/blue-skin.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
+  <!--[if lt IE 9]>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <!-- Your stuff: Third-party CSS libraries go here -->
+
+  <!-- This file stores project-specific CSS -->
+
+
+</head>
+
+<body>
+<!-- Header start-->
+
+
+<div class="body-bg-full v2">
+  <div class="container page-container">
+    <div class="page-content">
+      <div class="v2">
+        <form class="form-horizontal" method="post" action="/recruitment/register/">
+          <input type='hidden' name='csrfmiddlewaretoken'
+                 value='uRN6NLHCT0CGFVnVzMPiv0yzO3fFuSab8LljEfFoUZKAOpY02FK3ygOVl6sdS1XC'/>
+
+
+
+          <div class="control-group">
+            <div class="controls">
+              <button type="submit" class="btn btn-outline-success">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<!-- jQuery-->
+<script type="text/javascript" src="/static/plugins/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap JavaScript-->
+<script type="text/javascript" src="/static/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Malihu Scrollbar-->
+<script type="text/javascript"
+        src="/static/plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- Animo.js-->
+<script type="text/javascript" src="/static/plugins/animo.js/animo.min.js"></script>
+<!-- Bootstrap Progressbar-->
+<script type="text/javascript"
+        src="/static/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- jQuery Easy Pie Chart-->
+<script type="text/javascript"
+        src="/static/plugins/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+<!-- Toastr-->
+<script type="text/javascript" src="/static/plugins/toastr/toastr.min.js"></script>
+<!-- MomentJS-->
+<script type="text/javascript" src="/static/plugins/moment/min/moment.min.js"></script>
+<!-- jQuery BlockUI-->
+<script type="text/javascript" src="/static/plugins/blockUI/jquery.blockUI.js"></script>
+<!-- jQuery Counter Up-->
+<script type="text/javascript" src="/static/plugins/jquery-waypoints/waypoints.min.js"></script>
+<script type="text/javascript" src="/static/plugins/Counter-Up/jquery.counterup.min.js"></script>
+<!-- Jvector Map-->
+<script type="text/javascript" src="/static/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+<script type="text/javascript"
+        src="/static/plugins/jvectormap/maps/jquery-jvectormap-world-mill.js"></script>
+<!-- Flot Charts-->
+<script type="text/javascript" src="/static/plugins/flot/jquery.flot.js"></script>
+<script type="text/javascript" src="/static/plugins/flot/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="/static/plugins/flot.curvedlines/curvedLines.js"></script>
+<script type="text/javascript" src="/static/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+<!-- Morris Chart-->
+<script type="text/javascript" src="/static/plugins/raphael/raphael-min.js"></script>
+<script type="text/javascript" src="/static/plugins/morris.js/morris.min.js"></script>
+<!-- DataTables-->
+<script type="text/javascript" src="/static/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+        src="/static/plugins/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="/static/plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript"
+        src="/static/plugins/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/plugins/jszip/dist/jszip.min.js"></script>
+<script type="text/javascript" src="/static/plugins/pdfmake/build/pdfmake.min.js"></script>
+<script type="text/javascript" src="/static/plugins/pdfmake/build/vfs_fonts.js"></script>
+<script type="text/javascript" src="/static/plugins/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="/static/plugins/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script type="text/javascript"
+        src="/static/plugins/datatables.net-colreorder/js/dataTables.colReorder.min.js"></script>
+<script type="text/javascript"
+        src="/static/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript"
+        src="/static/plugins/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<!-- jQuery UI-->
+<script type="text/javascript" src="/static/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- FullCalendar-->
+<script type="text/javascript" src="/static/plugins/fullcalendar/dist/fullcalendar.min.js"></script>
+<!-- jQuery MiniColors-->
+<script type="text/javascript" src="/static/plugins/jquery-minicolors/jquery.minicolors.min.js"></script>
+<!-- Bootstrap Date Range Picker-->
+<script type="text/javascript" src="/static/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- Custom JS-->
+<script type="text/javascript" src="/static/js/app.js"></script>
+
+
+<link rel="stylesheet" href="/static/debug_toolbar/css/print.css" type="text/css" media="print"/>
+<link rel="stylesheet" href="/static/debug_toolbar/css/toolbar.css" type="text/css"/>
+
+<!-- Prevent our copy of jQuery from registering as an AMD module on sites that use RequireJS. -->
+<script src="/static/debug_toolbar/js/jquery_pre.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="/static/debug_toolbar/js/jquery_post.js"></script>
+
+<script src="/static/debug_toolbar/js/toolbar.js"></script>
+<div id="djDebug" class="djdt-hidden" dir="ltr"
+
+     data-store-id="2f1323e2316c460f98c2c2f8ce17c0e0"
+     data-render-panel-url="/__debug__/render_panel/"
+
+>
+  <div class="djdt-hidden" id="djDebugToolbar">
+    <ul id="djDebugPanelList">
+
+      <li><a id="djHideToolBarButton" href="#" title="Hide toolbar">Hide &#187;</a></li>
+
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtVersionsPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Versions" class="VersionsPanel">
+
+          Versions
+
+
+          <br/>
+          <small>Django 2.0.1</small>
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtTimerPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Time" class="TimerPanel">
+
+          Time
+
+
+          <br/>
+          <small>CPU: 512.56ms (528.79ms)</small>
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtSettingsPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Settings from &lt;code&gt;config.settings.local&lt;/code&gt;" class="SettingsPanel">
+
+          Settings
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtHeadersPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Headers" class="HeadersPanel">
+
+          Headers
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtRequestPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Request" class="RequestPanel">
+
+          Request
+
+
+          <br/>
+          <small>register</small>
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtSQLPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="SQL queries from 1 connection" class="SQLPanel">
+
+          SQL
+
+
+          <br/>
+          <small>2 queries in 5.25ms</small>
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtStaticFilesPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Static files (11831 found, 60 used)" class="StaticFilesPanel">
+
+          Static files
+
+
+          <br/>
+          <small>60 files used</small>
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtTemplatesPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Templates (2 rendered)" class="TemplatesPanel">
+
+          Templates
+
+
+          <br/>
+          <small>recruitment/applicant_form.html</small>
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtCachePanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Cache calls from 1 backend" class="CachePanel">
+
+          Cache
+
+
+          <br/>
+          <small>0 calls in 0.00ms</small>
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtSignalsPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Signals" class="SignalsPanel">
+
+          Signals
+
+
+          <br/>
+          <small>13 receivers of 12 signals</small>
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtLoggingPanel" checked="checked"
+               title="Disable for next and successive requests"/>
+
+        <a href="#" title="Log messages" class="LoggingPanel">
+
+          Logging
+
+
+          <br/>
+          <small>0 messages</small>
+
+
+        </a>
+
+      </li>
+
+      <li class="djDebugPanelButton">
+        <input type="checkbox" data-cookie="djdtRedirectsPanel" title="Enable for next and successive requests"/>
+
+        <div class="djdt-contentless djdt-disabled">
+
+          Intercept redirects
+
+
+        </div>
+
+      </li>
+
+    </ul>
+  </div>
+  <div class="djdt-hidden" id="djDebugToolbarHandle">
+    <span title="Show toolbar" id="djShowToolBarButton">&#171;</span>
+  </div>
+
+
+  <div id="VersionsPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Versions</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="TimerPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Time</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="SettingsPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Settings from <code>config.settings.local</code></h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="HeadersPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Headers</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="RequestPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Request</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="SQLPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>SQL queries from 1 connection</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="StaticFilesPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Static files (11831 found, 60 used)</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="TemplatesPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Templates (2 rendered)</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="CachePanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Cache calls from 1 backend</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="SignalsPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Signals</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="LoggingPanel" class="djdt-panelContent">
+    <div class="djDebugPanelTitle">
+      <a href="" class="djDebugClose"></a>
+      <h3>Log messages</h3>
+    </div>
+    <div class="djDebugPanelContent">
+
+      <img src="/static/debug_toolbar/img/ajax-loader.gif" alt="loading" class="djdt-loader"/>
+      <div class="djdt-scroll"></div>
+
+    </div>
+  </div>
+
+
+  <div id="djDebugWindow" class="djdt-panelContent"></div>
+</div>
+</body>
+</html>
+
+
