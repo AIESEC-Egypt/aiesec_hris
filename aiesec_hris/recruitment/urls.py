@@ -7,6 +7,10 @@ urlpatterns = [
         r'^register/$',
         views.register,
         name='member-registration'),
+    url(
+        r'^complete/$',
+        views.registration_complete,
+        name='registration-complete'),
     # url(
     #     r'^list/$',
     #     views.NotificationList.as_view(),

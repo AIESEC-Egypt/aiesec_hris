@@ -4069,6 +4069,7 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
 .body-bg-full.v2 .page-container .page-content .v3 {
   background-color: #FFF;
   margin: 0 auto;
+  width: inherit;
   padding: 24px;
   box-shadow: 0 5px 10px rgba(31, 54, 79, .5)
 }

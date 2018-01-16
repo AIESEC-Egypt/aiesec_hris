@@ -5,20 +5,23 @@ from django.db import models
 
 
 class Timeline(models.Model):
+    status_applied = models.BooleanField(default=False)
+    date_applied = models.DateTimeField(auto_now=True)
+
     status_contacted = models.BooleanField(default=False)
-    date_contacted = models.DateTimeField(default=False)
+    date_contacted = models.DateTimeField(default=None, null=True)
 
     status_onhold = models.BooleanField(default=False)
-    date_onhold = models.DateTimeField(default=False)
+    date_onhold = models.DateTimeField(default=None, null=True)
 
     status_accepted = models.BooleanField(default=False)
-    date_accepted = models.DateTimeField(default=False)
+    date_accepted = models.DateTimeField(default=None, null=True)
 
     status_rejected = models.BooleanField(default=False)
-    date_rejected = models.DateTimeField(default=False)
+    date_rejected = models.DateTimeField(default=None, null=True)
 
     status_inducted = models.BooleanField(default=False)
-    date_inducted = models.BooleanField(default=False)
+    date_inducted = models.DateTimeField(default=None, null=True)
 
 
 class Applicant(models.Model):
@@ -36,6 +39,4 @@ class Applicant(models.Model):
 
     # Questionnaire
 
-    # timeline = models.OneToOneField(Timeline, on_delete=models.CASCADE)
-
-
+    timeline = models.OneToOneField(Timeline, blank=True, null=True, on_delete=models.CASCADE)
