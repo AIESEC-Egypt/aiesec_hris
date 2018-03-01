@@ -1,42 +1,56 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-    <div class="row">
+{% block title %}{% endblock %}
+
+{% block page_container %}
+  <div class="page-container">
+    <div class="page-content container-fluid">
+      <div class="row">
         <div class="col-12">
-            {% include "components/_messages.html" %}
+          {% include "components/_messages.html" %}
         </div>
-    </div>
-    <div class="row mt-4">
+      </div>
+      <div class="row mt-4">
         <h1 class="col-12 text-center">{{ object.title }}</h1>
-    </div>
+      </div>
 
-    <div class="row">
+      <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
-            {% for paragraph in object.paragraph.all %}
-                <div class="row mt-4">
-                    {% if paragraph.youtube_url %}
-                            <iframe height="400px" class="col-12 mb-4" src="https://www.youtube.com/embed/{{ paragraph.youtube_id }}" frameborder="0" allowfullscreen></iframe>
-                    {% endif %}
+          {% for paragraph in object.paragraph.all %}
+            <div class="row mt-4">
+              {% if paragraph.youtube_url %}
+                <iframe height="400px" class="col-12 mb-4"
+                        src="https://www.youtube.com/embed/{{ paragraph.youtube_id }}" frameborder="0"
+                        allowfullscreen></iframe>
+              {% endif %}
 
-                    {% if paragraph.photo %}
-                            <div class="col-12 text-center"><img class="mw-100" src="{{ paragraph.photo.url }}"></div>
-                    {% endif %}
+              {% if paragraph.photo %}
+                <div class="col-12 text-center"><img class="mw-100" src="{{ paragraph.photo.url }}"></div>
+              {% endif %}
 
-                    {% if paragraph.document %}
-                            <div class="col-4">
-                                <img src="{% static "img/file-icon.svg" %}" class="mw100">
-                                <br>
-                                <a href="{{ post.document.url }}" download>download</a>
-                            </div>
-                    {% endif %}
-
-                    {% if paragraph.text %}
-                            <div class="col-12">{{ paragraph.text }}</div>
-                    {% endif %}
+              {% if paragraph.document %}
+                <div class="col-4">
+                  <img src="{% static "img/file-icon.svg" %}" class="mw100">
+                  <br>
+                  <a href="{{ post.document.url }}" download>download</a>
                 </div>
-            {% endfor %}
+              {% endif %}
+
+              {% if paragraph.text %}
+                <div class="col-12">{{ paragraph.text }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
 
         </div>
+      </div>
     </div>
-{% endblock content %}
+  </div>
+
+{% endblock page_container %}
+
+
+{% block extra_javascript %}
+  <script type="text/javascript" src="{% static "/js/functions.js" %}"></script>
+{% endblock %}

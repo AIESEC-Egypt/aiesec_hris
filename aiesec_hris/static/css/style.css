@@ -123,3 +123,9 @@ span.required {
 .delete {
     cursor: pointer;
 }
+
+
+.image-profile {
+  height: 100px;
+  width: 100px;
+}

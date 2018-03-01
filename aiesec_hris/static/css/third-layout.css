@@ -277,7 +277,9 @@ input[type=text], input[type=email], input[type=password], textarea {
 }
 
 label {
-  font-weight: 400
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
 }
 
 .form-control {
@@ -4508,4 +4510,35 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
 */
 [hidden][style="display: block;"] {
   display: block !important;
+}
+
+.body-bg-full.recruitment-background .page-container {
+  background-color: #1781F0;
+}
+
+.body-bg-full.recruitment-background .page-container label {
+  text-align: left;
+}
+
+.body-bg-full.recruitment-background .page-container .page-content {
+  width: auto
+}
+
+.body-bg-full.recruitment-background .page-container .page-content .v3 {
+  background-color: #FFF;
+  margin: 0 auto;
+  width: inherit;
+  padding: 24px;
+  box-shadow: 0 5px 10px rgba(31, 54, 79, .5)
+}
+
+.body-bg-full.recruitment-background .form-control {
+  border-color: #e6e6e6;
+  color: #737373
+}
+
+.body-bg-full.recruitment-background .form-control:focus {
+
+  border-color: #2284ED;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(34, 132, 267, 0.6);
 }

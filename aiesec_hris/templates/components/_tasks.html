@@ -1,27 +1,27 @@
 <div class="row">
-    {% for task in tasks %}
-      <div class="col-12 col-sm-6 col-lg-4">
-          <div class="task card mt-4">
-            <h4 class="card-header">
-              <div class="mb-1">
-                {{ task.title|slice:":25" }}...
-              </div>
-              <small>
-                  <span>{{ task.get_status_display }}</span>
-                  <span class="float-right text-danger">{{ task.deadline }}</span>
-              </small>
-            </h4>
-            <div class="card-block">
-              <p class="card-text">
-                  {{ task.description|slice:":200" }}
-              </p>
-              <a href="{% url "task-detail" task.id %}" class="btn btn-primary">View task</a>
-            </div>
+  {% for task in tasks %}
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="task card mt-4">
+        <h4 class="card-header">
+          <div class="mb-1">
+            {{ task.title|slice:":25" }}...
           </div>
+          <small>
+            <span>{{ task.get_status_display }}</span>
+            <span class="float-right text-danger">{{ task.deadline }}</span>
+          </small>
+        </h4>
+        <div class="card-block">
+          <p class="card-text">
+            {{ task.description|slice:":200" }}
+          </p>
+          <a href="{% url "task-detail" task.id %}" class="btn btn-primary">View task</a>
+        </div>
       </div>
-    {% empty %}
-      <div class="col-12 col-sm-6 col-lg-4">
-       There are currently no tasks
-      </div>
-    {% endfor %}
+    </div>
+  {% empty %}
+    <div class="col-12 col-sm-6 col-lg-4">
+      There are currently no tasks
+    </div>
+  {% endfor %}
 </div>

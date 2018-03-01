@@ -36,6 +36,10 @@ class Applicant(models.Model):
     date_of_birth = models.DateField()
     interested_ixp = models.CharField(max_length=128)
     ixp = models.BooleanField(default=False)
+    question_why = models.TextField()
+    question_expectations = models.TextField()
+    question_time = models.CharField(max_length=128)
+    question_uniqueness = models.TextField()
 
     # Questionnaire
 

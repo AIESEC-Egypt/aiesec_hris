@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Umega App - Blue Dashboard</title>
+  <title>{% block title %}HR IS - Home {% endblock %}</title>
 
 
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -13,6 +13,7 @@
     <![endif]-->
 
   {% block css %}
+
     <!-- PACE-->
     <link rel="stylesheet" type="text/css" href="{% static 'plugins/PACE/themes/blue/pace-theme-flash.css' %}">
     <script type="text/javascript" src="{% static 'plugins/PACE/pace.min.js' %}"></script>
@@ -69,8 +70,9 @@
     <!-- Primary Style-->
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
           rel="stylesheet">
-    <link rel=" stylesheet" type="text/css" href="{% static 'css/third-layout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/third-layout.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/css/skins/blue-skin.css' %}">
+    {% block extra_css %}{% endblock %}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
     <!--[if lt IE 9]>
@@ -91,13 +93,16 @@
 {% block header_block %}
   <header>
     <a href="{% url 'home' %}" class="brand pull-left">
-      <img src="{% static 'images/logo-light.png' %}" width="70" class="logo">
+      <img src="{% static 'images/logo-light.png' %}" width="40" class="logo">
       <img src="{% static 'images/logo-light.png' %}" width="40" class="logo-sm">
     </a>
-    <a href="javascript:" role="button" class="hamburger-menu pull-left"><span></span></a>
+
+    <a href="javascript:" role="button" class="visible-xs hamburger-menu pull-left"><span></span></a>
+    <h2 style="margin: auto" class="ml-15 mt-15 notification-bar list-inline pull-left fw-900">HR <i
+      class="fw-500">IS</i></h2>
     <ul class="notification-bar list-inline pull-right">
-      <li class="visible-xs"><a href="javascript:" role="button" class="header-icon search-bar-toggle"><i
-        class="ti-search"></i></a></li>
+
+
       <li class="dropdown"><a id="dropdownMenu1" href="#" data-toggle="dropdown" role="button"
                               aria-haspopup="true"
                               aria-expanded="false" class="dropdown-toggle bubble header-icon"><i
@@ -128,11 +133,11 @@
                                         aria-haspopup="true" aria-expanded="false"
                                         class="dropdown-toggle header-icon lh-1 pt-15 pb-15">
         <div class="media mt-0">
-          <div class="media-left avatar"><img src="{% static 'images/users/04.jpg' %}" alt=""
+          <div class="media-left avatar"><img src="{% static 'images/users/04.jpg' %}"
                                               class=" media-object img-circle"><span
             class="status bg-success"></span></div>
           <div class="media-right media-middle pl-0">
-            <p class="fs-12 text-base mb-0">Hi, Matthew</p>
+            <p class="fs-12 text-base mb-0">Hi, {{ user.username }}</p>
           </div>
         </div>
       </a>
@@ -141,9 +146,8 @@
             <li><a href="{% url 'users:detail' request.user.username %}"><i class="ti-user mr-5"></i> My
               Profile</a>
             </li>
-            <li><a href="{% url 'users:update' %}"><i class="ti-settings mr-5"></i> Account Settings</a>
-            </li>
-            <li><a href="{% url 'account_logout' %}"><i class="ti-power-off mr-5"></i> Logout</a></li>
+            <li><a href="{% url 'users:update' %}"><i class="ti-settings mr-5"></i>Account Settings</a></li>
+            <li><a href="{% url 'account_logout' %}"><i class="ti-power-off mr-5"></i>Logout</a></li>
 
 
           {% else %}
@@ -180,17 +184,17 @@
           <li class="sidebar-category">Main</li>
           <li class="panel"><a href="{% url 'home' %}"><i
             class="ti-home"></i><span
-            class="sidebar-title">Dashboard</span></a></li>
+            class="sidebar-title">Recruitment</span></a></li>
           <li class="panel"><a href="{% url 'home' %}"><i
             class="ti-world text-white"></i><span
             class="sidebar-title">Opportunities </span></a></li>
-          <li class="panel"><a href="{% url 'home' %}"><i
-            class="ti-layers-alt"></i><span
-            class="sidebar-title">Applications </span></a></li>
+          <li class="panel"><a href="{% url 'post-list' %}"><i
+            class="ti-agenda"></i><span
+            class="sidebar-title">Education</span></a></li>
           <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation"
                                href="#collapse4"
                                aria-expanded="false" aria-controls="collapse4" class="collapsed"><i
-            class="ti-paint-bucket"></i><span class="sidebar-title">Color system</span></a>
+            class="ti-paint-bucket"></i><span class="sidebar-title">My Team</span></a>
             <ul id="collapse4" class="list-unstyled collapse">
               <li><a href="green-system.html">Green</a></li>
               <li><a href="blue-system.html">Blue</a></li>

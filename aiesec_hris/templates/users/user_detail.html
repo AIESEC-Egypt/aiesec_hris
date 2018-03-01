@@ -1,36 +1,412 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}User: {{ object.username }}{% endblock %}
+{% block title %}Profile: {{ object.username }}{% endblock %}
 
-{% block content %}
-<div class="container">
+{% block page_container %}
+  <div class="page-container">
+    <div class="page-content container-fluid p-0">
+      <div class="row row-0">
+        <div class="col-lg-12">
+          <div class="overlay-container text-white"><img src="{% static '/images/backgrounds/profile.png' %}" alt=""
+                                                         class="overlay-bg img-responsive">
+            <div style="padding: 120px 30px 30px 30px" class="overlay-content clearfix">
+              <div class="pull-left media">
+                <div class="media-left"><a href="javascript:void(0)"
+                                           style="display: block; border-radius: 50%; padding: 3px; background-color: #fff;"><img
+                  src="{% static '/images/users/ali.jpg' %}" height="100" width="100" alt="" class="media-object img-circle"></a></div>
+                <div style="width: auto" class="media-body media-middle">
+                  <h2 class="media-heading text-uppercase">{{ object.username }}</h2>
+                  <div class="fs-20">MCVP DXP</div>
+                </div>
+              </div>
+              <div class="pull-right text-center">
+                <ul class="list-inline">
+                  <li>
+                    <div class="fs-24 fw-500">208</div>
+                    <p>Followers</p>
+                  </li>
+                  <li>
+                    <div class="fs-24 fw-500">560</div>
+                    <p>Likes</p>
+                  </li>
+                  <li>
+                    <div class="fs-24 fw-500">95</div>
+                    <p>Photos</p>
+                  </li>
+                </ul>
+                <div class="row">
 
-  <div class="row">
-    <div class="col-sm-12">
+                  {#        <div class="col-sm-12">#}
+                  <a class="btn btn-raised btn-lg btn-primary" href="{% url 'users:update' %}" role="button">My
+                    Info</a>
+                  <a class="btn btn-raised btn-lg btn-primary" href="{% url 'account_email' %}"
+                     role="button">E-Mail</a>
+                  <!-- Your Stuff: Custom user template urls -->
+                  {#        </div>#}
 
-      <h2>{{ object.username }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
-      {% endif %}
+                  {#      </div>#}
+                  {#                <button type="button" class="btn btn-raised btn-block btn-primary">Follow</button>#}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row ml-10 mr-10 pt-10">
+          <div class="col-md-3">
+            <div class="widget clear">
+              <div class="widget-heading">
+                <h3 class="widget-title">About me</h3>
+              </div>
+              <div class="widget-body">
+                <ul class="media-list mb-0">
+                  <li class="media">
+                    <div class="media-left"><i class="ti-briefcase text-info"></i></div>
+                    <div class="media-body">
+                      <p>Software Developer</p>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-left"><i class="ti-gift text-info"></i></div>
+                    <div class="media-body">
+                      <p>20 October 1990</p>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-left"><i class="ti-email text-info"></i></div>
+                    <div class="media-body">
+                      <p>lethemes@gmail.com</p>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-left"><i class="ti-home text-info"></i></div>
+                    <div class="media-body">
+                      <p>4270 Cottage Hill Road</p>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-left"><i class="ti-mobile text-info"></i></div>
+                    <div class="media-body">
+                      <p>(251) 300-2770</p>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-left"><i class="ti-world text-info"></i></div>
+                    <div class="media-body">
+                      <p>www.lethemes.net</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="widget clear">
+              <div class="widget-heading">
+                <h3 class="widget-title">Biography</h3>
+              </div>
+              <div class="widget-body">
+                <p>I am an Java, Android and Python software developer and teacher with 5 years of development
+                  experience!
+                  Whats more I reveal all my knowledge and secrets in my courses!</p>
+                <p>I've been using Java since all the way back in 2006 !</p>
+              </div>
+            </div>
+            <div class="widget clear">
+              <div class="widget-heading">
+                <h3 class="widget-title">Skills</h3>
+              </div>
+              <div class="widget-body">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <div class="block clearfix mb-5"><span class="pull-left fs-12">HTML5</span><span
+                      class="pull-right label label-outline label-primary">95%</span></div>
+                    <div class="progress progress-xs">
+                      <div role="progressbar" data-transitiongoal="85" class="progress-bar"></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="block clearfix mb-5"><span class="pull-left fs-12">CSS</span><span
+                      class="pull-right label label-outline label-success">98%</span></div>
+                    <div class="progress progress-xs">
+                      <div role="progressbar" data-transitiongoal="98" class="progress-bar progress-bar-success"></div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="block clearfix mb-5"><span class="pull-left fs-12">Javascript</span><span
+                      class="pull-right label label-outline label-purple">85%</span></div>
+                    <div class="progress progress-xs">
+                      <div role="progressbar" data-transitiongoal="85" class="progress-bar progress-bar-purple"></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="widget clear">
+              <div class="widget-heading">
+                <div class="media">
+                  <div class="media-left"><img src="../build/images/users/10.jpg" alt=""
+                                               class="media-object mo-lg img-circle"></div>
+                  <div class="media-body media-middle">
+                    <p class="mb-0"><span class="fw-500">Philip Fernandez</span> uploaded a new photo</p>
+                    <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                      class="ti-time"></i>
+                      12:03 PM
+                    </time>
+                  </div>
+                </div>
+              </div>
+              <div class="widget-body">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="thumbnail"><img src="../build/images/backgrounds/02.jpg" alt="">
+                  <div class="text-right caption">
+                    <ul class="list-inline mb-0">
+                      <li><i class="ti-comment text-info"></i> 239</li>
+                      <li><i class="ti-heart text-danger"></i> 4325</li>
+                      <li><i class="ti-share text-success"></i> 3654</li>
+                    </ul>
+                  </div>
+                </div>
+                <ul class="media-list">
+                  <li class="media">
+                    <div class="media-left avatar"><img alt="" src="../build/images/users/01.jpg"
+                                                        class="media-object img-circle"><span
+                      class="status bg-success"></span></div>
+                    <div class="media-body">
+                      <h5 class="media-heading inline-block">Philip Fernandez</h5>
+                      <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                        class="ti-time"></i> 12:12 PM
+                      </time>
+                      <p>Mission accomplished. It's revolutionary.</p>
+                      <div class="media">
+                        <div class="media-left avatar"><img alt="" src="../build/images/users/12.jpg"
+                                                            class="media-object img-circle"><span
+                          class="status bg-success"></span></div>
+                        <div class="media-body">
+                          <h5 class="media-heading inline-block">Carolyn Hernandez</h5>
+                          <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                            class="ti-time"></i> 12:14 PM
+                          </time>
+                          <p>Vastly thought out! Found myself staring at it for minutes.</p>
+                          <div class="media">
+                            <div class="media-left avatar"><img alt="" src="../build/images/users/11.jpg"
+                                                                class="media-object img-circle"><span
+                              class="status bg-success"></span></div>
+                            <div class="media-body">
+                              <h5 class="media-heading inline-block">Johnny Shaw</h5>
+                              <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                                class="ti-time"></i> 12:15 PM
+                              </time>
+                              <p>Let me take a nap... great colour palette, anyway.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="media">
+                        <div class="media-left avatar"><img alt="" src="../build/images/users/14.jpg"
+                                                            class="media-object img-circle"><span
+                          class="status bg-success"></span></div>
+                        <div class="media-body">
+                          <h5 class="media-heading inline-block">Jean Boyd</h5>
+                          <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                            class="ti-time"></i> 12:14 PM
+                          </time>
+                          <p>
+                            This camera angle has navigated right into my heart.
+                            My 32 year old parent rates this icons very cool :)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="widget clear">
+              <div class="widget-heading">
+                <div class="media">
+                  <div class="media-left"><img src="../build/images/users/12.jpg" alt=""
+                                               class="media-object mo-lg img-circle"></div>
+                  <div class="media-body media-middle">
+                    <p class="mb-0"><span class="fw-500">Pamela Day</span> at <span class="fw-500">Los Angeles</span>
+                    </p>
+                    <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                      class="ti-time"></i>
+                      9:29 PM
+                    </time>
+                  </div>
+                </div>
+              </div>
+              <div class="widget-body">
+                <p>Looks fun and good :-)</p>
+                <div class="thumbnail">
+                  <div id="simpleMap" style="height:350px;"></div>
+                  <div class="text-right caption">
+                    <ul class="list-inline mb-0">
+                      <li><i class="ti-comment text-info"></i> 43</li>
+                      <li><i class="ti-heart text-danger"></i> 437</li>
+                      <li><i class="ti-share text-success"></i> 651</li>
+                    </ul>
+                  </div>
+                </div>
+                <ul class="media-list">
+                  <li class="media">
+                    <div class="media-left avatar"><img alt="" src="../build/images/users/01.jpg"
+                                                        class="media-object img-circle"><span
+                      class="status bg-success"></span></div>
+                    <div class="media-body">
+                      <h5 class="media-heading inline-block">Philip Fernandez</h5>
+                      <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                        class="ti-time"></i> 12:12 PM
+                      </time>
+                      <p>Mission accomplished. It's revolutionary.</p>
+                      <div class="media">
+                        <div class="media-left avatar"><img alt="" src="../build/images/users/12.jpg"
+                                                            class="media-object img-circle"><span
+                          class="status bg-success"></span></div>
+                        <div class="media-body">
+                          <h5 class="media-heading inline-block">Carolyn Hernandez</h5>
+                          <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                            class="ti-time"></i> 12:14 PM
+                          </time>
+                          <p>Vastly thought out! Found myself staring at it for minutes.</p>
+                          <div class="media">
+                            <div class="media-left avatar"><img alt="" src="../build/images/users/11.jpg"
+                                                                class="media-object img-circle"><span
+                              class="status bg-success"></span></div>
+                            <div class="media-body">
+                              <h5 class="media-heading inline-block">Johnny Shaw</h5>
+                              <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                                class="ti-time"></i> 12:15 PM
+                              </time>
+                              <p>Let me take a nap... great colour palette, anyway.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="media">
+                        <div class="media-left avatar"><img alt="" src="../build/images/users/14.jpg"
+                                                            class="media-object img-circle"><span
+                          class="status bg-success"></span></div>
+                        <div class="media-body">
+                          <h5 class="media-heading inline-block">Jean Boyd</h5>
+                          <time datetime="2015-12-10T20:50:48+07:00" class="text-muted fs-12">20 Jan 2016 <i
+                            class="ti-time"></i> 12:14 PM
+                          </time>
+                          <p>
+                            This camera angle has navigated right into my heart.
+                            My 32 year old parent rates this icons very cool :)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="widget clear">
+              <div class="widget-heading">
+                <h3 class="widget-title">Team member</h3>
+              </div>
+              <div class="widget-body">
+                <ul class="media-list mb-0">
+                  <li class="media"><a href="javascript:;" class="conversation-toggle">
+                    <div class="media-left avatar"><img src="../build/images/users/10.jpg" alt=""
+                                                        class="media-object img-circle"><span
+                      class="status bg-success"></span></div>
+                    <div class="media-body">
+                      <h5 class="media-heading">Philip Fernandez</h5>
+                      <p class="text-muted mb-0">489 Rhapsody Street</p>
+                    </div>
+                  </a></li>
+                  <li class="media"><a href="javascript:;" class="conversation-toggle">
+                    <div class="media-left avatar"><img src="../build/images/users/20.jpg" alt=""
+                                                        class="media-object img-circle"><span
+                      class="status bg-success"></span></div>
+                    <div class="media-body">
+                      <h5 class="media-heading">Mary Carr</h5>
+                      <p class="text-muted mb-0">3611 West Fork Drive</p>
+                    </div>
+                  </a></li>
+                  <li class="media"><a href="javascript:;" class="conversation-toggle">
+                    <div class="media-left avatar"><img src="../build/images/users/11.jpg" alt=""
+                                                        class="media-object img-circle"><span
+                      class="status bg-danger"></span></div>
+                    <div class="media-body">
+                      <h5 class="media-heading">Joseph Salazar</h5>
+                      <p class="text-muted mb-0">4489 Hart Ridge Road</p>
+                    </div>
+                  </a></li>
+                  <li class="media"><a href="javascript:;" class="conversation-toggle">
+                    <div class="media-left avatar"><img src="../build/images/users/06.jpg" alt=""
+                                                        class="media-object img-circle"><span
+                      class="status bg-warning"></span></div>
+                    <div class="media-body">
+                      <h5 class="media-heading">John Cruz</h5>
+                      <p class="text-muted mb-0">3274 Lyndon Street</p>
+                    </div>
+                  </a></li>
+                  <li class="media"><a href="javascript:;" class="conversation-toggle">
+                    <div class="media-left avatar"><img src="../build/images/users/19.jpg" alt=""
+                                                        class="media-object img-circle"><span
+                      class="status bg-success"></span></div>
+                    <div class="media-body">
+                      <h5 class="media-heading">Jacqueline Rios</h5>
+                      <p class="text-muted mb-0">559 Holly Street</p>
+                    </div>
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="widget clear">
+              <div class="widget-heading">
+                <h3 class="widget-title">Activities</h3>
+              </div>
+              <div class="widget-body">
+                <ul class="media-list mb-0">
+                  <li class="media">
+                    <div class="media-left"><i class="ti-control-record text-info"></i></div>
+                    <div class="media-body">
+                      <p>Recommended Karen Ortega</p>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-left"><i class="ti-control-record text-danger"></i></div>
+                    <div class="media-body">
+                      <p>Retweeted George Lewis</p>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-left"><i class="ti-control-record text-warning"></i></div>
+                    <div class="media-body">
+                      <p>Followed Olivia Williamson</p>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-left"><i class="ti-control-record text-success"></i></div>
+                    <div class="media-body">
+                      <p>Replied to Janice Davis</p>
+                    </div>
+                  </li>
+                  <li class="media">
+                    <div class="media-left"><i class="ti-control-record text-primary"></i></div>
+                    <div class="media-body">
+                      <p>Favorited Arthur Gomez</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-{% if object == request.user %}
-<!-- Action buttons -->
-<div class="row">
-
-  <div class="col-sm-12">
-    <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-    <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
-    <!-- Your Stuff: Custom user template urls -->
-  </div>
-
-</div>
-<!-- End Action buttons -->
-{% endif %}
-
-
-</div>
-{% endblock content %}
+{% endblock page_container %}
 

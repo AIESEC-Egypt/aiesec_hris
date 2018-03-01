@@ -1,55 +1,71 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block content %}
+{% block title %}{% endblock %}
 
-    <div class="row">
+{% block page_container %}
+  <div class="page-container">
+    <div class="page-content container-fluid">
+      <div class="row">
         <div class="col-12">
-            {% include "components/_messages.html" %}
+          {% include "components/_messages.html" %}
         </div>
-    </div>
-    <br>
-    <form method='GET' action='' class='row'>
-            <div class='col-sm-6'>
-                <div class='input-group'>
-                    <input class='form-control' type='text' name='search'
-                           placeholder='Search Profiles' value='{{ request.GET.search }}'/>
-                    <span class='input-group-btn'>
+      </div>
+      <br>
+      <form method='GET' action='' class='row'>
+        <div class='col-sm-6'>
+          <div class='input-group'>
+            <input class='form-control' type='text' name='search'
+                   placeholder='Search Profiles' value='{{ request.GET.search }}'/>
+            <span class='input-group-btn'>
                         <button class='btn btn-default' type='submit'>Search
                             <i class="fa fa-search"></i></button>
                     </span>
-                </div>
-            </div>
-    </form>
-    <br>
-    <div class="row">
+          </div>
+        </div>
+      </form>
+      <br>
+      <div class="row">
         <!-- Nav tabs -->
         <div class="col-12">
-            <ul class="nav nav-tabs row" role="tablist">
-                <li class="nav-item col-6 col-md-3 text-center">
-                    <a class="nav-link active" data-toggle="tab" href="#new" role="tab">
-                        {{ unreviewed.count }} UNREVIEWED</a>
-                </li>
-                <li class="nav-item col-6 col-md-3 text-center">
-                    <a class="nav-link" data-toggle="tab" href="#accepted" role="tab">
-                        {{ accepted.count }} ACCEPTED</a>
-                </li>
-                <li class="nav-item col-6 col-md-3 text-center">
-                    <a class="nav-link" data-toggle="tab" href="#declined" role="tab">
-                        {{ declined.count }} DECLINED</a>
-                </li>
-            </ul>
+          <div class="widget">
+            <div class="widget-heading">
+              <h3 class="widget-title">Membership Profiles</h3>
+            </div>
+            <div class="widget-body">
+              <p>Please make sure that you review the current submissions thoroughly and allow only the complete
+                profiles.<br><br><strong><i>Thank you.</i></strong></p>
+              <div role="tabpanel">
+                <ul role="tablist" class="nav nav-tabs mb-15">
+                  <li role="presentation" class="active"><a id="unreviewed-tab" href="#home" role="tab"
+                                                            data-toggle="tab"
+                                                            aria-controls="home"
+                                                            aria-expanded="true">{{ unreviewed.count }} Unreviewed</a>
+                  </li>
+                  <li role="presentation"><a id="accepted-tab" href="#profile" role="tab" data-toggle="tab"
+                                             aria-controls="profile" aria-expanded="false">{{ accepted.count }}
+                    Accepted</a></li>
+                  <li role="presentation"><a id="declined-tab" href="#profile" role="tab" data-toggle="tab"
+                                             aria-controls="profile" aria-expanded="false">{{ declined.count }}
+                    DECLINED</a>
+                </ul>
+                <div class="tab-content">
+                  <div id="home" role="tabpanel" aria-labelledby="unreviewed-tab" class="tab-pane fade active in">
+                    {% include "components/_moderation_list.html" with reviews=unreviewed %}
+                  </div>
+                  <div id="profile" role="tabpanel" aria-labelledby="accepted-tab" class="tab-pane fade">
+                    {% include "components/_moderation_list.html" with reviews=accepted %}
+                  </div>
+                  <div id="profile" role="tabpanel" aria-labelledby="declined-tab" class="tab-pane fade">
+                    {% include "components/_moderation_list.html" with reviews=declined decline_status_tab=True %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Tab panes -->
-        <div class="tab-content col-12">
-            <div class="tab-pane active" id="new" role="tabpanel">
-                {% include "components/_moderation_list.html" with reviews=unreviewed %}
-            </div>
-            <div class="tab-pane" id="accepted" role="tabpanel">
-                {% include "components/_moderation_list.html" with reviews=accepted %}
-            </div>
-            <div class="tab-pane" id="declined" role="tabpanel">
-                {% include "components/_moderation_list.html" with reviews=declined decline_status_tab=True%}
-            </div>
-        </div>
+      </div>
     </div>
-{% endblock %}
+  </div>
+
+{% endblock page_container %}

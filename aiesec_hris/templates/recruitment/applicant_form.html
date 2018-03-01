@@ -4,9 +4,13 @@
 
 {% block title %}Join Us{% endblock %}
 {% block header_block %}{% endblock %}
+{% block extra_css %}
+  <link href="{% static 'plugins/Datedropper3/datedropper.css' %}" rel="stylesheet" type="text/css"/>
+
+{% endblock %}
 
 {% block content %}
-  <div class="body-bg-full v2">
+  <div class="body-bg-full recruitment-background">
     <div class="page-container">
       <div class="container col-xs-offset-3 col-lg-offset-0">
         <div class="logo col-md-2">
@@ -15,7 +19,7 @@
       </div>
       <div class="col-lg-offset-3">
         <div class="page-content container-fluid">
-          <div class="v3 col-lg-12">
+          <div class="v3">
             {{ form.errors }}
             {% if form.errors %}
               {% for field in form %}
@@ -34,94 +38,100 @@
 
             <form id="form-horizontal" method="POST" action="{% url 'member-registration' %}" class="form-horizontal">
               {% csrf_token %}
-
               <div class="form-group">
-                <label for="id_first_name" class="col-sm-2 control-label">First Name</label>
-                <div class="col-sm-4">
-                  <input id="id_first_name" type="text" name="first_name" data-rule-required="true"
-                         class="form-control">
-                </div>
-                <label for="id_last_name" class="col-sm-2 control-label">Last Name</label>
-                <div class="col-sm-4">
-                  <input id="id_last_name" type="text" name="last_name" data-rule-required="true" class="form-control">
-                </div>
+                <label for="id_first_name" class="pull-left pb-5 control-label">First Name</label>
+
+                <input id="id_first_name" type="text" name="first_name" data-rule-required="true"
+                       class="form-control">
               </div>
               <div class="form-group">
-                <label for="id_phone" class="col-sm-2 control-label">Phone Number</label>
-                <div class="col-sm-4">
-                  <input id="id_phone" type="text" name="phone" data-rule-required="true" data-rule-number="true"
-                         data-rule-rangelength="[10,11]"
-                         class="form-control">
-                </div>
-                <label for="id_email" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10 col-md-4">
-                  <input id="id_email" type="email" name="email" data-rule-required="true"
-                         data-rule-rangelength="[10,30]"
-                         data-rule-email="true"
-                         class="form-control">
-                </div>
+                <label for="id_last_name" class="pull-left pb-5 control-label">Last Name</label>
+
+                <input id="id_last_name" type="text" name="last_name" data-rule-required="true" class="form-control">
+              </div>
+
+
+              <div class="form-group">
+                <label for="id_phone" class="pull-left pb-5 control-label">Phone Number</label>
+
+                <input id="id_phone" type="text" name="phone" data-rule-required="true" data-rule-number="true"
+                       data-rule-rangelength="[10,11]"
+                       class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="id_email" class="pull-left control-label">Email</label>
+
+                <input id="id_email" type="email" name="email" data-rule-required="true"
+                       data-rule-rangelength="[10,30]"
+                       data-rule-email="true"
+                       class="form-control">
+
+              </div>
+
+
+              <div class="form-group">
+                <label for="id_university" class="control-label">University</label>
+
+                <select id="id_university" name="university" data-rule-required="true" class="form-control">
+                  <option value="">-- Select a University --</option>
+                  <option value="US">United States</option>
+
+                </select>
+
+                <label for="id_faculty" class="control-label">Faculty</label>
+
+                <select id="id_faculty" name="faculty" data-rule-required="true" class="form-control">
+                  <option value="">-- Select a Faculty --</option>
+                  <option value="US">United States</option>
+
+                </select>
+
               </div>
               <div class="form-group">
-                <label for="id_university" class="col-sm-2 control-label">University</label>
-                <div class="col-sm-4">
-                  <select id="id_university" name="university" data-rule-required="true" class="form-control">
-                    <option value="">-- Select a University --</option>
-                    <option value="US">United States</option>
+                <label for="id_city" class="control-label">City</label>
 
-                  </select>
-                </div>
-                <label for="id_faculty" class="col-sm-2 control-label">Faculty</label>
-                <div class="col-sm-4">
-                  <select id="id_faculty" name="faculty" data-rule-required="true" class="form-control">
-                    <option value="">-- Select a Faculty --</option>
-                    <option value="US">United States</option>
+                <select id="id_city" name="city" data-rule-required="true" class="form-control">
+                  <option value="">-- Select a City --</option>
+                  <option value="US">United States</option>
 
-                  </select>
+                </select>
+
+                <label for="id_date_of_birth" class="control-label">Date of birth:</label>
+
+                <div data-format="MM/DD/YYYY" class="input-group">
+                  <input data-default-date="1-1-2000"
+                         type="text" name="date_of_birth" placeholder="MM/DD/YY"
+                         data-rule-required="true" data-rule-minlength="8" data-rule-date="true"
+                         id="id_date_of_birth" class="form-control date-dropper" type="text"/><span
+                  class="input-group-addon"><i class="ti-calendar"></i></span>
                 </div>
+
               </div>
-              <div class="form-group">
-                <label for="id_city" class="col-sm-2 control-label">City</label>
-                <div class="col-sm-4">
-                  <select id="id_city" name="city" data-rule-required="true" class="form-control">
-                    <option value="">-- Select a City --</option>
-                    <option value="US">United States</option>
 
-                  </select>
-                </div>
-                <label for="id_date_of_birth" class="col-sm-2 control-label">Date of birth:</label>
-                <div class="col-sm-4">
-                  <div data-format="MM/DD/YYYY" class="input-group">
-                    <input id="id_date_of_birth" type="text" name="date_of_birth" placeholder="MM/DD/YY"
-                           data-rule-required="true" data-rule-minlength="8" data-rule-date="true"
-                           class="form-control"><span class="input-group-addon"><i class="ti-calendar"></i></span>
-                  </div>
-                </div>
-              </div>
               <div class="form-group">
-                <label for="id_interested_ixp" class="col-sm-6 center-block control-label">Are you interested to go on
+                <label for="id_interested_ixp" class="center-block control-label">Are you interested to go on
                   exchange with <span
                     class="fw-900">AIESEC</span>
                   in the future?</label>
 
-                <div class="col-sm-2">
 
-                  <div class="radio-inline col-sm-4">
-                    <label>
-                      <input type="radio" name="interested_ixp" id="id_interested_ixp" value="yes"
-                             data-rule-required="true"> yes
-                    </label>
-                  </div>
-                  <div class="radio-inline col-sm-4">
-                    <label>
-                      <input type="radio" name="interested_ixp" id="id_interested_ixp" value="no"> no
-                    </label>
-                  </div>
+                <div class="radio-inline">
+                  <label>
+                    <input type="radio" name="interested_ixp" id="id_interested_ixp" value="yes"
+                           data-rule-required="true"> yes
+                  </label>
                 </div>
-
+                <div class="radio-inline">
+                  <label>
+                    <input type="radio" name="interested_ixp" id="id_interested_ixp" value="no"> no
+                  </label>
+                </div>
               </div>
 
+
               <div class="form-group">
-                <div class="col-sm-2 col-sm-10">
+                <div class="col-sm-10">
                   <button type="submit" name="btnSubmit" class="btn btn-raised btn-black">Submit</button>
                 </div>
               </div>
@@ -134,10 +144,16 @@
 {% endblock %}
 
 {% block extra_javascript %}
+
   <script type="text/javascript" src="{% static "plugins/jquery-validation/dist/jquery.validate.min.js" %}"></script>
   <script type="text/javascript" src="{% static "plugins/jquery-validation/dist/additional-methods.min.js" %}"></script>
   <!-- Bootstrap FileStyle-->
   <script type="text/javascript" src="{% static "plugins/bootstrap-filestyle/src/bootstrap-filestyle.js" %}"></script>
+
   <script type="text/javascript" src="{% static "js/forms-validation.js" %}"></script>
+  <script src="{% static 'plugins/Datedropper3/datedropper.js' %}"></script>
+  <script>
+    $('.date-dropper').dateDropper();
+  </script>
 
 {% endblock %}

@@ -235,8 +235,7 @@ class Profile(models.Model):
     GENDER_CHOICES = (
         (1, 'MALE'),
         (2, 'FEMALE'))
-    user = models.OneToOneField(
-        User, related_name='profile', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     lc = models.ForeignKey(LC, null=True, blank=True, related_name='profile', on_delete=models.CASCADE)
     position = models.ForeignKey(Position, related_name='profile', on_delete=models.CASCADE)
     created_at = models.DateTimeField(null=False, auto_now_add=True)

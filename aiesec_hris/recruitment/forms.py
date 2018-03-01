@@ -5,6 +5,6 @@ from .models import Applicant
 
 class ApplicantForm(forms.ModelForm):
     class Meta:
-        exclude = ['timeline', 'ixp']
         model = Applicant
+        exclude = ['timeline', 'ixp']
         fields = '__all__'
