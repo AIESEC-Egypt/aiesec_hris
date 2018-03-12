@@ -73,16 +73,6 @@
     <link rel="stylesheet" type="text/css" href="{% static '/css/third-layout.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/css/skins/blue-skin.css' %}">
     {% block extra_css %}{% endblock %}
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- Your stuff: Third-party CSS libraries go here -->
-
-    <!-- This file stores project-specific CSS -->
-
 
   {% endblock %}
 
@@ -182,12 +172,12 @@
         </div>
         <ul class="list-unstyled navigation mb-0 text-white">
           <li class="sidebar-category">Main</li>
-          <li class="panel"><a href="{% url 'home' %}"><i
+          <li class="panel"><a class="active" href="{% url 'home' %}"><i
             class="ti-home"></i><span
-            class="sidebar-title">Recruitment</span></a></li>
-          <li class="panel"><a href="{% url 'home' %}"><i
-            class="ti-world text-white"></i><span
-            class="sidebar-title">Opportunities </span></a></li>
+            class="sidebar-title">Home</span></a></li>
+          <li class="panel"><a href="{% url 'recruitment:recruitment-list' %}"><i
+            class="ti-files text-white"></i><span
+            class="sidebar-title">Recruitment </span></a></li>
           <li class="panel"><a href="{% url 'post-list' %}"><i
             class="ti-agenda"></i><span
             class="sidebar-title">Education</span></a></li>

@@ -2096,7 +2096,7 @@ header .header-icon:hover {
 }
 
 .navigation > li > a.active {
-  box-shadow: inset 2px 0 #0667D6;
+  box-shadow: inset 2px 0 #FFF;
 
 }
 
@@ -4040,7 +4040,7 @@ table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
 }
 
 .body-bg-full hr {
-  border-color: rgba(255, 255, 255, .1)
+  border-color: black;
 }
 
 .body-bg-full .setting, .body-bg-full .setting .setting-toggle {

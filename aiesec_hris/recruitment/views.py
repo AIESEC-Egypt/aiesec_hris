@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect
+from django.db.models import Avg, F
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import ApplicantForm
-from .models import Timeline
+from .models import Timeline, Applicant
+
+
 
 
 def register(request):
@@ -27,6 +30,28 @@ def register(request):
     })
 
     return render(request, 'recruitment/applicant_form.html', context=context_dictionary)
+
+
+def applicant_profile(request, applicant_id):
+    applicant = get_object_or_404(Applicant, pk=applicant_id)
+    print(applicant)
+    context_dictionary = {
+        'applicant': applicant
+    }
+    return render(request, 'recruitment/applicant_profile.html', context_dictionary)
+
+
+def recruitment_list(request):
+    context_dictionary = {}
+    applicants = Applicant.objects.all()
+    process_time = applicants.aggregate(
+        average_difference=Avg(F('timeline__date_contacted') - F('timeline__date_applied')))
+    print(process_time)
+    context_dictionary.update({
+        'applicants': applicants,
+        'process_time': process_time
+    })
+    return render(request, 'recruitment/recruitment_list.html', context_dictionary)
 
 
 def registration_complete(request):

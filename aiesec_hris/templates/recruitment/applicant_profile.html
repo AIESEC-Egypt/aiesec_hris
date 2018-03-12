@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block page_container %}
+  <div class="page-container">
+    <div class="page-content container-fluid">
+      <ul class="timeline list-unstyled mb-0">
+        <li class="timeline-item">
+          <div class="timeline-time">
+            <div class="fs-24 fw-500 text-success text-uppercase">{{ applicant.timeline.date_applied.time }}</div>
+            <p>{{ applicant.timeline.date_applied.date }}</p>
+          </div>
+          <i class="ti-announcement timeline-icon bg-success"></i>
+          <div class="timeline-content">
+            <div class="panel panel-success mb-0">
+              <div class="panel-heading text-uppercase">
+                <strong>{{ applicant.first_name }} {{ applicant.last_name }}</strong> filled the
+                recruitment
+                form.
+              </div>
+              <div class="panel-body">
+                <p>Friends can help each other. A true friend is someone who lets you have total freedom to be yourself
+                  - and especially to feel. Or, not feel. Whatever you happen to be feeling at the moment is fine with
+                  them. That's what real love amounts to - letting a person be what he really is.</p>
+
+                {% if not applicant.timeline.status_contacted %}
+                  <ul class="list-inline mb-0">
+                    <li>
+                      <button type="button" class="btn btn-xs btn-success"><i class="ti-thumb-up"></i> I contacted this
+                        person
+                      </button>
+                    </li>
+                  </ul>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-time">
+            <div class="fs-30 fw-500 text-warning">15:08</div>
+            <p>30 May 2016</p>
+          </div>
+          <i class="ti-user timeline-icon bg-warning"></i>
+          <div class="timeline-content">
+            <div class="panel panel-warning mb-0">
+              <div class="panel-heading">Lorem ipsum dolor sit amet</div>
+              <div class="panel-body">
+                <h5 class="media-heading">Create workflow</h5>
+                <p class="text-muted">Team member</p>
+                <ul class="list-inline">
+                  <li>
+                    <div class="avatar"><img src="../build/images/users/02.jpg" alt=""
+                                             class="media-object img-circle"><span class="status bg-success"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="avatar"><img src="../build/images/users/03.jpg" alt=""
+                                             class="media-object img-circle"><span class="status bg-warning"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="avatar"><img src="../build/images/users/07.jpg" alt=""
+                                             class="media-object img-circle"><span class="status bg-danger"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="avatar"><img src="../build/images/users/05.jpg" alt=""
+                                             class="media-object img-circle"><span class="status bg-success"></span>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="avatar"><img src="../build/images/users/06.jpg" alt=""
+                                             class="media-object img-circle"><span class="status bg-danger"></span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-time">
+            <div class="fs-30 fw-500 text-primary">02:10</div>
+            <p>25 May 2016</p>
+          </div>
+          <i class="ti-gallery timeline-icon bg-primary"></i>
+          <div class="timeline-content">
+            <div class="row">
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail"><img src="../build/images/backgrounds/34.jpg" alt="" class="img-responsive">
+                  <div class="text-right caption">
+                    <ul class="list-inline mb-0">
+                      <li><i class="ti-comment text-info"></i> 12</li>
+                      <li><i class="ti-heart text-danger"></i> 324</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail"><img src="../build/images/backgrounds/35.jpg" alt="" class="img-responsive">
+                  <div class="text-right caption">
+                    <ul class="list-inline mb-0">
+                      <li><i class="ti-comment text-info"></i> 32</li>
+                      <li><i class="ti-heart text-danger"></i> 654</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="thumbnail"><img src="../build/images/backgrounds/41.jpg" alt="" class="img-responsive">
+                  <div class="text-right caption">
+                    <ul class="list-inline mb-0">
+                      <li><i class="ti-comment text-info"></i> 43</li>
+                      <li><i class="ti-heart text-danger"></i> 549</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-time">
+            <div class="fs-30 fw-500 text-purple">12:50</div>
+            <p>23 May 2016</p>
+          </div>
+          <i class="ti-quote-left timeline-icon bg-purple"></i>
+          <div class="timeline-content">
+            <blockquote class="mb-0">
+              <p>Love is friendship that has caught fire. It is quiet understanding, mutual confidence, sharing and
+                forgiving. It is loyalty through good and bad times. It settles for less than perfection and makes
+                allowances for human weaknesses.</p>
+              <footer>Ann Landers</footer>
+            </blockquote>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-time">
+            <div class="fs-30 fw-500">09:18</div>
+            <p>21 May 2016</p>
+          </div>
+          <i class="ti-shine timeline-icon bg-black"></i>
+          <div class="timeline-content">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="overlay-container"><img src="../build/images/backgrounds/22.jpg" alt=""
+                                                    class="overlay-bg img-responsive">
+                  <div class="overlay-content p-30">
+                    <div class="clearfix">
+                      <div class="pull-left">
+                        <p class="mb-0">NEW YORK</p>
+                        <div class="fs-60 fw-300">20:30</div>
+                        <p class="fs-13 mb-5">Sunday, 20 May</p>
+                        <p class="fs-13 mb-0"><i class="wi wi-raindrop"></i> 10% <i class="wi wi-wind-direction"></i>
+                          1.4m/s NW</p>
+                      </div>
+                      <div class="pull-right text-center">
+                        <div class="fs-30">76<sup>o</sup></div>
+                        <i class="wi wi-day-cloudy-windy fs-60 mt-15 mb-15"></i>
+                        <p class="mb-0">Mostly Cloudy</p>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row row-0 text-center">
+                      <div class="col-xs-3">
+                        <div class="mb-10">Tue</div>
+                        <i class="block fs-24 wi wi-day-fog"></i>
+                        <div class="mt-10">69<sup>o</sup></div>
+                      </div>
+                      <div class="col-xs-3">
+                        <div class="mb-10">Wed</div>
+                        <i class="block fs-24 wi wi-day-snow-wind"></i>
+                        <div class="mt-10">71<sup>o</sup></div>
+                      </div>
+                      <div class="col-xs-3">
+                        <div class="mb-10">Thu</div>
+                        <i class="block fs-24 wi wi-day-sprinkle"></i>
+                        <div class="mt-10">75<sup>o</sup></div>
+                      </div>
+                      <div class="col-xs-3">
+                        <div class="mb-10">Fri</div>
+                        <i class="block fs-24 wi wi-day-lightning"></i>
+                        <div class="mt-10">70<sup>o</sup></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-time">
+            <div class="fs-30 fw-500 text-info">20:10</div>
+            <p>20 May 2016</p>
+          </div>
+          <i class="ti-quote-right timeline-icon bg-info"></i>
+          <div class="timeline-content">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="thumbnail p-20"><img src="../build/images/backgrounds/37.jpg" alt="" class="img-responsive">
+                  <div class="text-right caption">
+                    <ul class="list-inline mb-0">
+                      <li><i class="ti-comment text-info"></i> 12</li>
+                      <li><i class="ti-heart text-danger"></i> 324</li>
+                    </ul>
+                  </div>
+                  <blockquote class="mb-0 fs-14">
+                    <p><em>I believe that imagination is stronger than knowledge. That myth is more potent than history.
+                      That dreams are more powerful than facts. That hope always triumphs over experience. That laughter
+                      is the only cure for grief. And I believe that love is stronger than death.</em></p>
+                    <footer>Robert Fulghum</footer>
+                  </blockquote>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="thumbnail p-20"><img src="../build/images/backgrounds/49.jpg" alt="" class="img-responsive">
+                  <div class="text-right caption">
+                    <ul class="list-inline mb-0">
+                      <li><i class="ti-comment text-info"></i> 65</li>
+                      <li><i class="ti-heart text-danger"></i> 547</li>
+                    </ul>
+                  </div>
+                  <blockquote class="mb-0 fs-14">
+                    <p><em>Love is the crowning grace of humanity, the holiest right of the soul, the golden link which
+                      binds us to duty and truth, the redeeming principle that chiefly reconciles the heart to life, and
+                      is prophetic of eternal good.</em></p>
+                    <footer>Petrarch</footer>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock page_container %}
+
+
+{% block modal %}{% endblock modal %}
+
+{% block extra_javascript %}
+{% endblock %}
