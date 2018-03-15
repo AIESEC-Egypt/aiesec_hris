@@ -1,10 +1,9 @@
+from django.contrib import messages
 from django.db.models import Avg, F
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import ApplicantForm
 from .models import Timeline, Applicant
-
-
 
 
 def register(request):
@@ -15,11 +14,10 @@ def register(request):
         if form.is_valid():
             applicant = form.save(commit=False)
             timeline = Timeline()
-            timeline.status_applied = True
             timeline.save()
             applicant.timeline = timeline
             applicant.save()
-            return redirect(registration_complete)
+            return redirect('recruitment:registration-complete')
     else:
         form = ApplicantForm()
     # errors = form.errors
@@ -34,11 +32,19 @@ def register(request):
 
 def applicant_profile(request, applicant_id):
     applicant = get_object_or_404(Applicant, pk=applicant_id)
-    print(applicant)
     context_dictionary = {
         'applicant': applicant
     }
     return render(request, 'recruitment/applicant_profile.html', context_dictionary)
+
+
+def applicant_contacted(request, applicant_id):
+    applicant = get_object_or_404(Applicant, pk=applicant_id)
+    # if request.user == 'MC':
+    applicant.contact(request.user)
+    messages.success(request, 'Applicant Contacted Successfully!', extra_tags='alert-success')
+
+    return redirect('recruitment:applicant-profile', applicant_id)
 
 
 def recruitment_list(request):

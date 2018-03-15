@@ -37,7 +37,7 @@
               {% endfor %}
             {% endif %}
 
-            <form id="form-vertical" method="POST" action="{% url 'member-registration' %}" class="form-vertical">
+            <form id="form-vertical" method="POST" action="{% url 'recruitment:member-registration' %}" class="form-vertical">
               {% csrf_token %}
               <div class="form-group">
                 <label for="id_first_name" class="pull-left pb-5 control-label">First Name</label>

@@ -1,29 +1,40 @@
 from datetime import datetime
+from django.utils import timezone
 
 from django.db import models
 
-
 # Create your models here.
+from aiesec_hris.users.models import User
 
 
 class Timeline(models.Model):
     status_applied = models.BooleanField(default=True)
-    date_applied = models.DateTimeField(auto_now=True)
+    date_applied = models.DateTimeField(default=timezone.now)
 
     status_contacted = models.BooleanField(default=False)
     date_contacted = models.DateTimeField(default=None, null=True)
+    user_contacted = models.ForeignKey(User, blank=True, null=True, on_delete=models.DO_NOTHING,
+                                       related_name="user_contacted")
 
     status_onhold = models.BooleanField(default=False)
     date_onhold = models.DateTimeField(default=None, null=True)
+    user_onhold = models.ForeignKey(User, blank=True, null=True, on_delete=models.DO_NOTHING,
+                                    related_name="user_onhold")
 
     status_accepted = models.BooleanField(default=False)
     date_accepted = models.DateTimeField(default=None, null=True)
+    user_accepted = models.ForeignKey(User, blank=True, null=True, on_delete=models.DO_NOTHING,
+                                      related_name="user_accepted")
 
     status_rejected = models.BooleanField(default=False)
     date_rejected = models.DateTimeField(default=None, null=True)
+    user_rejected = models.ForeignKey(User, blank=True, null=True, on_delete=models.DO_NOTHING,
+                                      related_name="user_rejected")
 
     status_inducted = models.BooleanField(default=False)
     date_inducted = models.DateTimeField(default=None, null=True)
+    user_inducted = models.ForeignKey(User, blank=True, null=True, on_delete=models.DO_NOTHING,
+                                      related_name="user_inducted")
 
     current_status = models.CharField(max_length=128, blank=True, null=True)
 
@@ -65,9 +76,11 @@ class Applicant(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
-    def contact(self):
+    def contact(self, User):
         self.timeline.status_contacted = True
-        self.timeline.date_contacted = datetime.now()
+        self.timeline.date_contacted = timezone.now()
+        self.timeline.user_contacted = User
+        self.timeline.save()
         self.timeline.change_status()
 
     def accept(self):

@@ -18,12 +18,12 @@ urlpatterns = [
         views.recruitment_list,
         name='recruitment-list'),
     url(
-        r'^profile/(?P<applicant_id>[0-9]+)/$',
+        r'^profile/(?P<applicant_id>[0-9]+)/contact/',
+        views.applicant_contacted,
+        name='contact'),
+    url(
+        r'^profile/(?P<applicant_id>[0-9]+)/',
         views.applicant_profile,
         name='applicant-profile'),
-    url(
-        r'^profile/(?P<applicant_id>[0-9]+)/contact/$',
-        views.applicant_profile,
-        name='contact'),
 
 ]

@@ -19,8 +19,7 @@ class ChangePasswordForm(forms.Form):
         new_password = self.cleaned_data.get('new_password')
         new_password_2 = self.cleaned_data.get('new_password_2')
         if new_password != new_password_2:
-            raise forms.ValidationError(
-                'New passwords do not match')
+            raise forms.ValidationError('New passwords do not match')
         return new_password
 
     def clean_current_password(self):

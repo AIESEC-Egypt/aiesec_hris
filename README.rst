@@ -4,7 +4,7 @@ AIESEC_HRIS
 An HR Information System to manage our membership body and to make sure that our members are getting the right experiences.
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-     :target: https://github.com/pydanny/cookiecutter-django/
+    :target: https://github.com/pydanny/cookiecutter-django/
      :alt: Built with Cookiecutter Django
 
 
@@ -31,6 +31,18 @@ Setting Up Your Users
     $ python manage.py createsuperuser
 
 For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+
+Autofixture Usage
+^^^^^^^^^^^^^
+
+To populate some models for testing purposes
+
+    $ from aiesec_hris.recruitment.models import Applicant,Timeline
+    $ from autofixture import AutoFixture
+    $ fixture = AutoFixture(Applicant, field_values={'timeline':Timeline().save()})
+    $ entries = fixture.create(10)
+
+
 
 Test coverage
 ^^^^^^^^^^^^^
