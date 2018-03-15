@@ -35,7 +35,7 @@ For convenience, you can keep your normal user logged in on Chrome and your supe
 Autofixture Usage
 ^^^^^^^^^^^^^
 
-To populate some models for testing purposes
+To populate some models for testing purposes::
 
     $ from aiesec_hris.recruitment.models import Applicant,Timeline
     $ from autofixture import AutoFixture
