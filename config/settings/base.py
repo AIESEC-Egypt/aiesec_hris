@@ -42,7 +42,6 @@ DJANGO_APPS = [
     # 'django.contrib.humanize',
 
     # Admin
-    'grappelli',
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
@@ -60,6 +59,7 @@ LOCAL_APPS = [
     # Your stuff: custom apps go here
     'django_nose',
     'aiesec_hris.core.apps.CoreConfig',
+    'aiesec_hris.courses.apps.CoursesConfig',
     'aiesec_hris.comments.apps.CommentsConfig',
     'aiesec_hris.notifications.apps.NotificationsConfig',
     'aiesec_hris.tasks.apps.TasksConfig',
@@ -123,7 +123,7 @@ MANAGERS = ADMINS
 # Uses django-environ to accept uri format
 # See: https://django-environ.readthedocs.io/en/latest/#supported-types
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres:///hris_db'),
+    "default": env.db("DATABASE_URL", default="postgres://postgres:thebest1@localhost:5432/hris_db")
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
