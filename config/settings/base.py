@@ -50,6 +50,8 @@ THIRD_PARTY_APPS = [
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
     'autofixture',
+    'taggit',
+    'embed_video'
 ]
 
 # Apps specific for this project go here.
